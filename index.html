@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0b0b0f">
+  <meta name="description" content="VYZO - Watch. Create. Connect.">
+  <title>VYZO - Watch. Create. Connect.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #09090d;
+      --surface: #111117;
+      --surface2: #181820;
+      --border: #292933;
+      --text: #ffffff;
+      --muted: #a6a6b2;
+      --accent: #ff3158;
+      --accent2: #7c3aed;
+      --green: #20d47b;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+      padding-bottom: 78px;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* TOP BAR */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 14px;
+      background: rgba(9, 9, 13, 0.95);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: max-content;
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .brand-icon {
+      width: 34px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white;
+      font-size: 15px;
+      box-shadow: 0 5px 20px rgba(255, 49, 88, 0.22);
+    }
+
+    .search-box {
+      flex: 1;
+      max-width: 650px;
+      margin: auto;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      height: 42px;
+      border: 1px solid var(--border);
+      outline: none;
+      border-radius: 22px;
+      background: var(--surface);
+      color: white;
+      padding: 0 46px 0 17px;
+    }
+
+    .search-box input:focus {
+      border-color: #555565;
+    }
+
+    .search-btn {
+      position: absolute;
+      right: 4px;
+      top: 4px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--surface2);
+      color: white;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: transparent;
+      color: white;
+      font-size: 19px;
+    }
+
+    .icon-btn:hover {
+      background: var(--surface2);
+    }
+
+    .avatar {
+      width: 37px;
+      height: 37px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #ff3158, #7c3aed);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    /* LAYOUT */
+    .app-layout {
+      display: flex;
+      max-width: 1600px;
+      margin: auto;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 64px;
+      width: 230px;
+      height: calc(100vh - 64px);
+      overflow-y: auto;
+      padding: 18px 12px;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .side-title {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 14px 12px 7px;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+    }
+
+    .side-item {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 12px;
+      border-radius: 10px;
+      background: transparent;
+      color: #eee;
+      text-align: left;
+      margin-bottom: 3px;
+    }
+
+    .side-item:hover,
+    .side-item.active {
+      background: var(--surface2);
+    }
+
+    .side-item.active {
+      color: white;
+      font-weight: 700;
+    }
+
+    .main {
+      min-width: 0;
+      flex: 1;
+      padding: 18px;
+    }
+
+    /* CATEGORY BAR */
+    .category-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 16px;
+      scrollbar-width: none;
+    }
+
+    .category-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .category {
+      flex: 0 0 auto;
+      padding: 9px 15px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: #ddd;
+      white-space: nowrap;
+    }
+
+    .category.active,
+    .category:hover {
+      background: white;
+      color: black;
+      border-color: white;
+    }
+
+    /* SECTION HEADER */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 7px 0 15px;
+    }
+
+    .section-header h1 {
+      font-size: 22px;
+    }
+
+    .section-header button {
+      background: transparent;
+      color: var(--muted);
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 260px;
+      overflow: hidden;
+      border-radius: 18px;
+      margin-bottom: 24px;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.9), rgba(0,0,0,.25)),
+        radial-gradient(circle at 80% 30%, #7c3aed, transparent 40%),
+        linear-gradient(135deg, #15151e, #28283a);
+      border: 1px solid var(--border);
+      padding: 35px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-content {
+      max-width: 620px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 7px;
+      background: rgba(255,255,255,.1);
+      font-size: 12px;
+      margin-bottom: 13px;
+    }
+
+    .hero h2 {
+      font-size: clamp(27px, 4vw, 44px);
+      line-height: 1.08;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: #c7c7d0;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .primary-btn {
+      padding: 11px 18px;
+      border-radius: 9px;
+      background: white;
+      color: black;
+      font-weight: 700;
+    }
+
+    .secondary-btn {
+      padding: 11px 18px;
+      border-radius: 9px;
+      background: rgba(255,255,255,.1);
+      color: white;
+      margin-left: 8px;
+    }
+
+    /* VIDEO GRID */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px 15px;
+    }
+
+    .video-card {
+      min-width: 0;
+      cursor: pointer;
+    }
+
+    .thumbnail {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 11px;
+      background: linear-gradient(135deg, #1d1d27, #343448);
+      border: 1px solid var(--border);
+    }
+
+    .thumbnail img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .duration {
+      position: absolute;
+      right: 7px;
+      bottom: 7px;
+      padding: 3px 6px;
+      border-radius: 5px;
+      background: rgba(0,0,0,.85);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .play-overlay {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      opacity: 0;
+      background: rgba(0,0,0,.25);
+      transition: .2s;
+      font-size: 40px;
+    }
+
+    .video-card:hover .play-overlay {
+      opacity: 1;
+    }
+
+    .video-info {
+      display: flex;
+      gap: 10px;
+      padding-top: 9px;
+    }
+
+    .channel-avatar {
+      width: 35px;
+      height: 35px;
+      flex: 0 0 35px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #ff3158, #7c3aed);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .video-text {
+      min-width: 0;
+    }
+
+    .video-title {
+      font-size: 14px;
+      line-height: 1.4;
+      font-weight: 600;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .channel-name {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .video-meta {
+      color: #888894;
+      font-size: 11px;
+      margin-top: 3px;
+    }
+
+    /* SHORTS */
+    .shorts-section {
+      margin: 32px 0;
+    }
+
+    .shorts-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+      overflow: hidden;
+    }
+
+    .short-card {
+      position: relative;
+      aspect-ratio: 9 / 15;
+      border-radius: 12px;
+      overflow: hidden;
+      background: linear-gradient(145deg, #24242f, #101015);
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+
+    .short-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .short-gradient {
+      position: absolute;
+      inset: 45% 0 0;
+      background: linear-gradient(transparent, rgba(0,0,0,.9));
+    }
+
+    .short-info {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .short-views {
+      color: #bbb;
+      margin-top: 4px;
+      font-size: 11px;
+    }
+
+    /* MOBILE NAV */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      z-index: 1200;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 67px;
+      background: rgba(10,10,14,.97);
+      backdrop-filter: blur(15px);
+      border-top: 1px solid var(--border);
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .mobile-nav button {
+      background: transparent;
+      color: #9999a5;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 3px;
+      font-size: 10px;
+    }
+
+    .mobile-nav button span:first-child {
+      font-size: 20px;
+    }
+
+    .mobile-nav button.active {
+      color: white;
+    }
+
+    .create-mobile {
+      width: 42px;
+      height: 42px;
+      margin-top: -14px;
+      border-radius: 50%;
+      background: white !important;
+      color: black !important;
+      font-size: 23px !important;
+      border: 4px solid var(--bg);
+    }
+
+    /* MODAL */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(0,0,0,.75);
+      backdrop-filter: blur(8px);
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 500px;
+      max-height: 90vh;
+      overflow-y: auto;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: #111117;
+      padding: 20px;
+    }
+
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .modal-head h2 {
+      font-size: 20px;
+    }
+
+    .close-btn {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: var(--surface2);
+      color: white;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 13px;
+      color: #ccc;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      border: 1px solid var(--border);
+      outline: none;
+      border-radius: 9px;
+      background: var(--surface);
+      color: white;
+      padding: 11px;
+    }
+
+    .form-group textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .full-btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white;
+      font-weight: 700;
+    }
+
+    /* TOAST */
+    .toast {
+      position: fixed;
+      z-index: 5000;
+      left: 50%;
+      bottom: 88px;
+      transform: translate(-50%, 20px);
+      opacity: 0;
+      pointer-events: none;
+      background: #fff;
+      color: #111;
+      padding: 11px 17px;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: .25s;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1200px) {
+      .video-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .shorts-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    @media (max-width: 850px) {
+      .sidebar {
+        display: none;
+      }
+
+      .main {
+        padding: 13px;
+      }
+
+      .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 17px 10px;
+      }
+
+      .shorts-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .hero {
+        min-height: 230px;
+        padding: 25px;
+      }
+
+      .mobile-nav {
+        display: grid;
+      }
+
+      body {
+        padding-bottom: 68px;
+      }
+
+      .top-actions .icon-btn:nth-child(1) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .topbar {
+        height: 58px;
+        padding: 0 10px;
+      }
+
+      .brand {
+        font-size: 20px;
+      }
+
+      .brand-icon {
+        width: 30px;
+        height: 25px;
+      }
+
+      .search-box {
+        max-width: none;
+      }
+
+      .search-box input {
+        height: 38px;
+      }
+
+      .top-actions {
+        gap: 0;
+      }
+
+      .top-actions .avatar {
+        width: 34px;
+        height: 34px;
+      }
+
+      .hero {
+        min-height: 235px;
+        padding: 20px;
+        border-radius: 14px;
+      }
+
+      .hero h2 {
+        font-size: 27px;
+      }
+
+      .hero p {
+        font-size: 13px;
+      }
+
+      .secondary-btn {
+        display: none;
+      }
+
+      .section-header h1 {
+        font-size: 19px;
+      }
+
+      .video-title {
+        font-size: 13px;
+      }
+
+      .channel-avatar {
+        display: none;
+      }
+
+      .shorts-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .short-card:nth-child(n+7) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .shorts-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+
+    <a href="#" class="brand" onclick="goHome(); return false;">
+      <span class="brand-icon">▶</span>
+      <span>VYZO</span>
+    </a>
+
+    <div class="search-box">
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="Search videos, creators..."
+        autocomplete="off"
+        onkeydown="handleSearchKey(event)"
+      >
+      <button class="search-btn" onclick="searchVideos()" aria-label="Search">⌕</button>
+    </div>
+
+    <div class="top-actions">
+      <button class="icon-btn" onclick="showToast('Voice search coming with backend integration')" aria-label="Voice search">🎙️</button>
+      <button class="icon-btn" onclick="openNotifications()" aria-label="Notifications">🔔</button>
+      <button class="icon-btn" onclick="openProfile()" aria-label="Profile">
+        <span class="avatar">V</span>
+      </button>
+    </div>
+
+  </header>
+
+  <div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <button class="side-item active" onclick="setSection('home', this)">
+        <span>🏠</span><span>Home</span>
+      </button>
+
+      <button class="side-item" onclick="setSection('shorts', this)">
+        <span>🔥</span><span>Shorts</span>
+      </button>
+
+      <button class="side-item" onclick="openSubscriptions()">
+        <span>📺</span><span>Subscriptions</span>
+      </button>
+
+      <div class="side-title">You</div>
+
+      <button class="side-item" onclick="openHistory()">
+        <span>🕐</span><span>History</span>
+      </button>
+
+      <button class="side-item" onclick="openPlaylists()">
+        <span>📋</span><span>Playlists</span>
+      </button>
+
+      <button class="side-item" onclick="openWatchLater()">
+        <span>⏱️</span><span>Watch later</span>
+      </button>
+
+      <button class="side-item" onclick="openLikedVideos()">
+        <span>❤️</span><span>Liked videos</span>
+      </button>
+
+      <div class="side-title">Explore</div>
+
+      <button class="side-item" onclick="filterCategory('Music')">
+        <span>🎵</span><span>Music</span>
+      </button>
+
+      <button class="side-item" onclick="filterCategory('Gaming')">
+        <span>🎮</span><span>Gaming</span>
+      </button>
+
+      <button class="side-item" onclick="filterCategory('Sports')">
+        <span>⚽</span><span>Sports</span>
+      </button>
+
+      <button class="side-item" onclick="filterCategory('News')">
+        <span>📰</span><span>News</span>
+      </button>
+
+      <button class="side-item" onclick="filterCategory('Education')">
+        <span>📚</span><span>Education</span>
+      </button>
+
+      <div class="side-title">More</div>
+
+      <button class="side-item" onclick="openCreate()">
+        <span>➕</span><span>Create</span>
+      </button>
+
+      <button class="side-item" onclick="openSettings()">
+        <span>⚙️</span><span>Settings</span>
+      </button>
+
+      <button class="side-item" onclick="showToast('Help center will be connected to backend')">
+        <span>❓</span><span>Help</span>
+      </button>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <!-- CATEGORIES -->
+      <div class="category-scroll" id="categoryBar">
+        <button class="category active" onclick="filterCategory('All', this)">All</button>
+        <button class="category" onclick="filterCategory('Music', this)">Music</button>
+        <button class="category" onclick="filterCategory('Gaming', this)">Gaming</button>
+        <button class="category" onclick="filterCategory('Sports', this)">Sports</button>
+        <button class="category" onclick="filterCategory('News', this)">News</button>
+        <button class="category" onclick="filterCategory('Education', this)">Education</button>
+        <button class="category" onclick="filterCategory('Technology', this)">Technology</button>
+        <button class="category" onclick="filterCategory('Comedy', this)">Comedy</button>
+        <button class="category" onclick="filterCategory('Movies', this)">Movies</button>
+        <button class="category" onclick="filterCategory('Travel', this)">Travel</button>
+      </div>
+
+      <!-- HERO -->
+      <section class="hero">
+
+        <div class="hero-content">
+
+          <span class="hero-badge">✨ Welcome to VYZO</span>
+
+          <h2>Watch. Create. Connect.</h2>
+
+          <p>
+            Discover videos, follow creators, watch Shorts and build your own
+            channel on VYZO.
+          </p>
+
+          <button class="primary-btn" onclick="openCreate()">＋ Create</button>
+          <button class="secondary-btn" onclick="openExplore()">Explore</button>
+
+        </div>
+
+      </section>
+
+      <!-- HOME -->
+      <section id="homeSection">
+
+        <div class="section-header">
+          <h1 id="sectionTitle">Recommended videos</h1>
+          <button onclick="refreshFeed()">↻ Refresh</button>
+        </div>
+
+        <div class="video-grid" id="videoGrid"></div>
+
+      </section>
+
+      <!-- SHORTS -->
+      <section class="shorts-section" id="shortsSection">
+
+        <div class="section-header">
+          <h1>🔥 Shorts</h1>
+          <button onclick="openShorts()">View all →</button>
+        </div>
+
+        <div class="shorts-grid" id="shortsGrid"></div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav">
+
+    <button class="active" onclick="goHome()">
+      <span>🏠</span>
+      <span>Home</span>
+    </button>
+
+    <button onclick="openShorts()">
+      <span>🔥</span>
+      <span>Shorts</span>
+    </button>
+
+    <button onclick="openCreate()">
+      <span class="create-mobile">＋</span>
+      <span>Create</span>
+    </button>
+
+    <button onclick="openSubscriptions()">
+      <span>📺</span>
+      <span>Subscriptions</span>
+    </button>
+
+    <button onclick="openProfile()">
+      <span>👤</span>
+      <span>You</span>
+    </button>
+
+  </nav>
+
+  <!-- CREATE MODAL -->
+  <div class="modal" id="createModal">
+
+    <div class="modal-box">
+
+      <div class="modal-head">
+        <h2>＋ Create on VYZO</h2>
+        <button class="close-btn" onclick="closeModal('createModal')">✕</button>
+      </div>
+
+      <div class="form-group">
+        <label>Content type</label>
+        <select id="contentType">
+          <option>Video</option>
+          <option>Short</option>
+          <option>Live Stream</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Video title</label>
+        <input id="uploadTitle" type="text" placeholder="Enter video title">
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+        <textarea id="uploadDescription" placeholder="Tell viewers about your video"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Category</label>
+        <select id="uploadCategory">
+          <option>Entertainment</option>
+          <option>Music</option>
+          <option>Gaming</option>
+          <option>Sports</option>
+          <option>Education</option>
+          <option>Technology</option>
+          <option>News</option>
+          <option>Travel</option>
+          <option>Comedy</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Video file</label>
+        <input id="videoFile" type="file" accept="video/*">
+      </div>
+
+      <button class="full-btn" onclick="startUpload()">
+        Upload to VYZO
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- PROFILE MODAL -->
+  <div class="modal" id="profileModal">
+
+    <div class="modal-box">
+
+      <div class="modal-head">
+        <h2>👤 Your Profile</h2>
+        <button class="close-btn" onclick="closeModal('profileModal')">✕</button>
+      </div>
+
+      <div style="text-align:center;padding:10px 0 25px;">
+        <div class="avatar" style="width:75px;height:75px;margin:auto;font-size:25px;">V</div>
+        <h2 style="margin-top:12px;">VYZO Creator</h2>
+        <p style="color:#999;margin-top:5px;">@vyzocreator</p>
+      </div>
+
+      <button class="full-btn" onclick="showToast('Channel editor will connect to backend')">
+        Edit Channel
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- NOTIFICATION MODAL -->
+  <div class="modal" id="notificationModal">
+
+    <div class="modal-box">
+
+      <div class="modal-head">
+        <h2>🔔 Notifications</h2>
+        <button class="close-btn" onclick="closeModal('notificationModal')">✕</button>
+      </div>
+
+      <div style="padding:15px 0;border-bottom:1px solid #292933;">
+        🎉 Welcome to VYZO!
+        <div style="font-size:12px;color:#888;margin-top:5px;">
+          Your VYZO journey starts here.
+        </div>
+      </div>
+
+      <div style="padding:15px 0;">
+        🔔 Creator notifications will appear here.
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- SETTINGS MODAL -->
+  <div class="modal" id="settingsModal">
+
+    <div class="modal-box">
+
+      <div class="modal-head">
+        <h2>⚙️ Settings</h2>
+        <button class="close-btn" onclick="closeModal('settingsModal')">✕</button>
+      </div>
+
+      <button class="side-item" onclick="toggleTheme()">
+        <span>🌙</span>
+        <span>Toggle theme</span>
+      </button>
+
+      <button class="side-item" onclick="showToast('Language settings coming soon')">
+        <span>🌐</span>
+        <span>Language</span>
+      </button>
+
+      <button class="side-item" onclick="showToast('Privacy settings will be connected to backend')">
+        <span>🔒</span>
+        <span>Privacy</span>
+      </button>
+
+      <button class="side-item" onclick="showToast('Account management will be connected to authentication')">
+        <span>👤</span>
+        <span>Account</span>
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    /*
+      VYZO FRONTEND FOUNDATION
+      --------------------------------
+      Backend-ready architecture.
+
+      Future backend modules:
+      - Authentication
+      - Database
+      - Video storage
+      - Comments
+      - Likes
+      - Subscriptions
+      - Notifications
+      - Creator analytics
+      - Admin moderation
+    */
+
+    const videos = [
+      {
+        id: 1,
+        title: "Welcome to VYZO — Watch. Create. Connect.",
+        channel: "VYZO Official",
+        category: "Technology",
+        views: "12K",
+        time: "2 days ago",
+        duration: "3:42",
+        color: "linear-gradient(135deg,#ff3158,#7c3aed)"
+      },
+      {
+        id: 2,
+        title: "Top 10 Amazing Places You Should Visit",
+        channel: "Travel India",
+        category: "Travel",
+        views: "84K",
+        time: "1 day ago",
+        duration: "8:21",
+        color: "linear-gradient(135deg,#0066ff,#00c6ff)"
+      },
+      {
+        id: 3,
+        title: "Latest Gaming Challenge",
+        channel: "Game Zone",
+        category: "Gaming",
+        views: "156K",
+        time: "5 hours ago",
+        duration: "12:10",
+        color: "linear-gradient(135deg,#7c3aed,#ec4899)"
+      },
+      {
+        id: 4,
+        title: "Learn Something New Every Day",
+        channel: "Study Hub",
+        category: "Education",
+        views: "42K",
+        time: "3 days ago",
+        duration: "15:34",
+        color: "linear-gradient(135deg,#0ea5e9,#14b8a6)"
+      },
+      {
+        id: 5,
+        title: "Best Music Hits — New Playlist",
+        channel: "VYZO Music",
+        category: "Music",
+        views: "1.2M",
+        time: "4 days ago",
+        duration: "4:18",
+        color: "linear-gradient(135deg,#f43f5e,#f97316)"
+      },
+      {
+        id: 6,
+        title: "Football Skills You Need To Know",
+        channel: "Sports Arena",
+        category: "Sports",
+        views: "328K",
+        time: "6 hours ago",
+        duration: "7:55",
+        color: "linear-gradient(135deg,#16a34a,#84cc16)"
+      },
+      {
+        id: 7,
+        title: "Technology That Will Change The Future",
+        channel: "Tech World",
+        category: "Technology",
+        views: "215K",
+        time: "1 week ago",
+        duration: "11:02",
+        color: "linear-gradient(135deg,#334155,#6366f1)"
+      },
+      {
+        id: 8,
+        title: "Funny Moments You Can't Stop Watching",
+        channel: "Fun Factory",
+        category: "Comedy",
+        views: "670K",
+        time: "2 days ago",
+        duration: "9:40",
+        color: "linear-gradient(135deg,#f59e0b,#ef4444)"
+      },
+      {
+        id: 9,
+        title: "Daily News Update",
+        channel: "VYZO News",
+        category: "News",
+        views: "95K",
+        time: "1 hour ago",
+        duration: "6:12",
+        color: "linear-gradient(135deg,#475569,#0f172a)"
+      },
+      {
+        id: 10,
+        title: "Movie Discussion & Review",
+        channel: "Cinema Talk",
+        category: "Movies",
+        views: "73K",
+        time: "8 hours ago",
+        duration: "14:27",
+        color: "linear-gradient(135deg,#be123c,#581c87)"
+      },
+      {
+        id: 11,
+        title: "Easy Life Hacks Everyone Should Know",
+        channel: "Daily Life",
+        category: "Education",
+        views: "302K",
+        time: "5 days ago",
+        duration: "5:20",
+        color: "linear-gradient(135deg,#0891b2,#2563eb)"
+      },
+      {
+        id: 12,
+        title: "The Ultimate VYZO Creator Guide",
+        channel: "VYZO Academy",
+        category: "Technology",
+        views: "18K",
+        time: "1 day ago",
+        duration: "10:18",
+        color: "linear-gradient(135deg,#4f46e5,#9333ea)"
+      }
+    ];
+
+    const shorts = [
+      {
+        id: 101,
+        title: "Amazing skills 🔥",
+        views: "2.4M views",
+        color: "linear-gradient(160deg,#ef4444,#7c3aed)"
+      },
+      {
+        id: 102,
+        title: "Wait for it 😱",
+        views: "845K views",
+        color: "linear-gradient(160deg,#2563eb,#06b6d4)"
+      },
+      {
+        id: 103,
+        title: "Football magic ⚽",
+        views: "1.8M views",
+        color: "linear-gradient(160deg,#16a34a,#0f766e)"
+      },
+      {
+        id: 104,
+        title: "Funny moment 😂",
+        views: "4.2M views",
+        color: "linear-gradient(160deg,#f59e0b,#ef4444)"
+      },
+      {
+        id: 105,
+        title: "Tech trick 💡",
+        views: "620K views",
+        color: "linear-gradient(160deg,#4338ca,#0891b2)"
+      },
+      {
+        id: 106,
+        title: "Travel view 🌍",
+        views: "932K views",
+        color: "linear-gradient(160deg,#0ea5e9,#22c55e)"
+      }
+    ];
+
+    let currentCategory = "All";
+
+    function renderVideos(list = videos) {
+
+      const grid = document.getElementById("videoGrid");
+
+      if (!list.length) {
+        grid.innerHTML = `
+          <div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:#999;">
+            <div style="font-size:40px;margin-bottom:12px;">🔍</div>
+            <h3>No videos found</h3>
+            <p style="margin-top:7px;">Try another search or category.</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = list.map(video => `
+
+        <article class="video-card" onclick="openVideo(${video.id})">
+
+          <div class="thumbnail" style="background:${video.color};">
+
+            <div style="
+              position:absolute;
+              inset:0;
+              display:grid;
+              place-items:center;
+              font-size:44px;
+              font-weight:800;
+              opacity:.16;
+            ">VYZO</div>
+
+            <div class="play-overlay">▶</div>
+
+            <span class="duration">${video.duration}</span>
+
+          </div>
+
+          <div class="video-info">
+
+            <div class="channel-avatar">
+              ${video.channel.substring(0,1).toUpperCase()}
+            </div>
+
+            <div class="video-text">
+
+              <div class="video-title">${escapeHTML(video.title)}</div>
+
+              <div class="channel-name">
+                ${escapeHTML(video.channel)}
+              </div>
+
+              <div class="video-meta">
+                ${video.views} views • ${video.time}
+              </div>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      `).join("");
+    }
+
+    function renderShorts() {
+
+      const grid = document.getElementById("shortsGrid");
+
+      grid.innerHTML = shorts.map(short => `
+
+        <article
+          class="short-card"
+          onclick="openShort(${short.id})"
+          style="background:${short.color};"
+        >
+
+          <div style="
+            position:absolute;
+            inset:0;
+            display:grid;
+            place-items:center;
+            font-size:35px;
+            font-weight:800;
+            opacity:.16;
+          ">VYZO</div>
+
+          <div class="short-gradient"></div>
+
+          <div class="short-info">
+            ${escapeHTML(short.title)}
+            <div class="short-views">${short.views}</div>
+          </div>
+
+        </article>
+
+      `).join("");
+    }
+
+    function escapeHTML(text) {
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function handleSearchKey(event) {
+      if (event.key === "Enter") {
+        searchVideos();
+      }
+    }
+
+    function searchVideos() {
+
+      const query = document
+        .getElementById("searchInput")
+        .value
+        .trim()
+        .toLowerCase();
+
+      if (!query) {
+        currentCategory = "All";
+        document.getElementById("sectionTitle").textContent =
+          "Recommended videos";
+        renderVideos(videos);
+        return;
+      }
+
+      const results = videos.filter(video =>
+        video.title.toLowerCase().includes(query) ||
+        video.channel.toLowerCase().includes(query) ||
+        video.category.toLowerCase().includes(query)
+      );
+
+      document.getElementById("sectionTitle").textContent =
+        `Search results for "${query}"`;
+
+      renderVideos(results);
+    }
+
+    function filterCategory(category, button = null) {
+
+      currentCategory = category;
+
+      document.querySelectorAll(".category").forEach(btn => {
+        btn.classList.remove("active");
+      });
+
+      if (button) {
+        button.classList.add("active");
+      } else {
+        document.querySelectorAll(".category").forEach(btn => {
+          if (btn.textContent.trim() === category) {
+            btn.classList.add("active");
+          }
+        });
+      }
+
+      if (category === "All") {
+        document.getElementById("sectionTitle").textContent =
+          "Recommended videos";
+
+        renderVideos(videos);
+        return;
+      }
+
+      const filtered = videos.filter(
+        video => video.category === category
+      );
+
+      document.getElementById("sectionTitle").textContent =
+        category + " videos";
+
+      renderVideos(filtered);
+    }
+
+    function refreshFeed() {
+
+      const shuffled = [...videos].sort(() => Math.random() - 0.5);
+
+      renderVideos(shuffled);
+
+      showToast("Feed refreshed");
+    }
+
+    function openVideo(id) {
+
+      const video = videos.find(item => item.id === id);
+
+      if (!video) return;
+
+      showToast(`Opening: ${video.title}`);
+
+      /*
+        Real video player will be connected here.
+
+        Future:
+        - Video URL
+        - Views
+        - Like
+        - Comment
+        - Share
+        - Subscribe
+        - Related videos
+      */
+    }
+
+    function openShort(id) {
+
+      const short = shorts.find(item => item.id === id);
+
+      if (!short) return;
+
+      showToast(`Opening Short: ${short.title}`);
+    }
+
+    function openShorts() {
+
+      document.getElementById("shortsSection")
+        .scrollIntoView({ behavior: "smooth" });
+
+      showToast("Shorts");
+    }
+
+    function openCreate() {
+      document.getElementById("createModal").classList.add("show");
+    }
+
+    function openProfile() {
+      document.getElementById("profileModal").classList.add("show");
+    }
+
+    function openNotifications() {
+      document.getElementById("notificationModal").classList.add("show");
+    }
+
+    function openSettings() {
+      document.getElementById("settingsModal").classList.add("show");
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove("show");
+    }
+
+    function openSubscriptions() {
+      showToast("Subscriptions will show your followed creators");
+    }
+
+    function openHistory() {
+      showToast("Watch history");
+    }
+
+    function openPlaylists() {
+      showToast("Your playlists");
+    }
+
+    function openWatchLater() {
+      showToast("Watch later");
+    }
+
+    function openLikedVideos() {
+      showToast("Liked videos");
+    }
+
+    function openExplore() {
+
+      document.getElementById("homeSection")
+        .scrollIntoView({ behavior: "smooth" });
+
+      showToast("Explore VYZO");
+    }
+
+    function goHome() {
+
+      document.getElementById("sectionTitle").textContent =
+        "Recommended videos";
+
+      renderVideos(videos);
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+    function setSection(section, element) {
+
+      document.querySelectorAll(".side-item").forEach(item => {
+        item.classList.remove("active");
+      });
+
+      if (element) {
+        element.classList.add("active");
+      }
+
+      if (section === "home") {
+        goHome();
+      }
+
+      if (section === "shorts") {
+        openShorts();
+      }
+    }
+
+    function startUpload() {
+
+      const title =
+        document.getElementById("uploadTitle").value.trim();
+
+      const file =
+        document.getElementById("videoFile").files[0];
+
+      if (!title) {
+        showToast("Please enter a video title");
+        return;
+      }
+
+      if (!file) {
+        showToast("Please select a video file");
+        return;
+      }
+
+      /*
+        Frontend validation only.
+
+        Real upload will be connected to:
+        Authentication + Database + Cloud Storage.
+      */
+
+      showToast("Upload system ready for backend connection");
+
+      setTimeout(() => {
+        closeModal("createModal");
+      }, 900);
+    }
+
+    function toggleTheme() {
+
+      const light =
+        document.body.dataset.theme === "light";
+
+      if (!light) {
+
+        document.body.dataset.theme = "light";
+
+        document.documentElement.style.setProperty(
+          "--bg",
+          "#f7f7fa"
+        );
+
+        document.documentElement.style.setProperty(
+          "--surface",
+          "#ffffff"
+        );
+
+        document.documentElement.style.setProperty(
+          "--surface2",
+          "#eeeeF3"
+        );
+
+        document.documentElement.style.setProperty(
+          "--border",
+          "#ddddE5"
+        );
+
+        document.documentElement.style.setProperty(
+          "--text",
+          "#111111"
+        );
+
+        showToast("Light mode");
+
+      } else {
+
+        document.body.dataset.theme = "";
+
+        document.documentElement.style.setProperty(
+          "--bg",
+          "#09090d"
+        );
+
+        document.documentElement.style.setProperty(
+          "--surface",
+          "#111117"
+        );
+
+        document.documentElement.style.setProperty(
+          "--surface2",
+          "#181820"
+        );
+
+        document.documentElement.style.setProperty(
+          "--border",
+          "#292933"
+        );
+
+        document.documentElement.style.setProperty(
+          "--text",
+          "#ffffff"
+        );
+
+        showToast("Dark mode");
+      }
+    }
+
+    function showToast(message) {
+
+      const toast = document.getElementById("toast");
+
+      toast.textContent = message;
+      toast.classList.add("show");
+
+      clearTimeout(window.__toastTimer);
+
+      window.__toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2200);
+    }
+
+    document.querySelectorAll(".modal").forEach(modal => {
+
+      modal.addEventListener("click", event => {
+
+        if (event.target === modal) {
+          modal.classList.remove("show");
+        }
+
+      });
+
+    });
+
+    // INITIAL LOAD
+    renderVideos();
+    renderShorts();
+
+  </script>
+
+</body>
+</html>
