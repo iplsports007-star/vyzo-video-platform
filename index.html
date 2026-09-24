@@ -11,82 +11,84 @@
 :root{
   --bg:#0f0f0f;
   --card:#181818;
-  --card2:#222;
+  --card2:#242424;
   --text:#fff;
   --muted:#aaa;
-  --border:#303030;
+  --border:#333;
   --accent:#ff1744;
   --blue:#3ea6ff;
 }
 body.light{
-  --bg:#f8f8f8;
+  --bg:#f7f7f7;
   --card:#fff;
-  --card2:#eee;
+  --card2:#ededed;
   --text:#111;
   --muted:#666;
   --border:#ddd;
 }
 body{
   margin:0;
-  font-family:Arial,Helvetica,sans-serif;
   background:var(--bg);
   color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
 }
-button,input,select,textarea{font:inherit}
+button,input,textarea,select{font:inherit}
 button{cursor:pointer}
-a{color:inherit;text-decoration:none}
+*{scrollbar-width:thin}
 
-/* TOP */
+/* TOPBAR */
 .topbar{
   height:64px;
   position:fixed;
-  top:0;left:0;right:0;
+  left:0;right:0;top:0;
   z-index:100;
-  background:var(--bg);
-  border-bottom:1px solid var(--border);
   display:flex;
   align-items:center;
+  gap:15px;
   padding:0 18px;
-  gap:18px;
+  background:var(--bg);
+  border-bottom:1px solid var(--border);
 }
 .logo{
+  min-width:105px;
   font-size:25px;
   font-weight:900;
-  color:var(--text);
-  min-width:105px;
+  cursor:pointer;
 }
 .logo span{color:var(--accent)}
 .search{
   flex:1;
   max-width:650px;
-  display:flex;
   margin:auto;
+  display:flex;
 }
 .search input{
   flex:1;
-  background:var(--card);
+  height:42px;
   border:1px solid var(--border);
+  border-right:0;
+  border-radius:23px 0 0 23px;
+  background:var(--card);
   color:var(--text);
-  border-radius:22px 0 0 22px;
-  padding:11px 18px;
+  padding:0 18px;
   outline:none;
 }
 .search button{
   width:55px;
   border:1px solid var(--border);
-  border-left:0;
-  border-radius:0 22px 22px 0;
+  border-radius:0 23px 23px 0;
   background:var(--card2);
   color:var(--text);
 }
-.top-actions{display:flex;gap:7px}
+.top-actions{display:flex;gap:4px}
 .icon-btn{
+  width:42px;
+  height:42px;
   border:0;
+  border-radius:50%;
   background:transparent;
   color:var(--text);
-  font-size:21px;
-  width:42px;height:42px;
-  border-radius:50%;
+  font-size:20px;
 }
 .icon-btn:hover{background:var(--card2)}
 
@@ -94,12 +96,12 @@ a{color:inherit;text-decoration:none}
 .sidebar{
   position:fixed;
   top:64px;
-  bottom:0;
   left:0;
+  bottom:0;
   width:220px;
-  border-right:1px solid var(--border);
-  padding:15px 10px;
+  padding:14px 10px;
   overflow:auto;
+  border-right:1px solid var(--border);
 }
 .side-btn{
   width:100%;
@@ -107,15 +109,18 @@ a{color:inherit;text-decoration:none}
   background:transparent;
   color:var(--text);
   text-align:left;
-  padding:12px 15px;
-  border-radius:10px;
+  padding:12px 14px;
+  border-radius:9px;
   margin-bottom:3px;
 }
-.side-btn:hover,.side-btn.active{background:var(--card2)}
+.side-btn:hover,
+.side-btn.active{
+  background:var(--card2);
+}
 .side-title{
+  margin:20px 13px 8px;
   color:var(--muted);
   font-size:12px;
-  margin:20px 14px 8px;
   text-transform:uppercase;
 }
 .create-side{
@@ -132,41 +137,56 @@ a{color:inherit;text-decoration:none}
 .categories{
   display:flex;
   gap:8px;
-  overflow:auto;
-  padding-bottom:18px;
+  overflow-x:auto;
+  padding-bottom:17px;
 }
 .category{
-  white-space:nowrap;
   border:0;
   border-radius:20px;
   padding:9px 16px;
+  white-space:nowrap;
   background:var(--card2);
   color:var(--text);
 }
-.category.active{background:var(--text);color:var(--bg)}
+.category.active{
+  background:var(--text);
+  color:var(--bg);
+}
 
 .hero{
-  background:linear-gradient(120deg,#171717,#242424,#111);
-  border-radius:18px;
   padding:30px;
-  margin-bottom:28px;
+  margin-bottom:27px;
+  border-radius:18px;
+  background:linear-gradient(120deg,#171717,#292929,#111);
 }
-.hero h1{margin:0 0 8px;font-size:34px}
-.hero p{color:var(--muted);margin:0 0 18px}
-.hero button{
+.hero h1{
+  margin:0 0 8px;
+  font-size:34px;
+}
+.hero p{
+  color:var(--muted);
+  margin:0 0 18px;
+}
+.primary{
+  border:0;
+  border-radius:8px;
   background:var(--accent);
   color:white;
-  border:0;
-  padding:12px 20px;
-  border-radius:8px;
+  padding:11px 19px;
   font-weight:bold;
 }
-
+.secondary{
+  border:1px solid var(--border);
+  border-radius:8px;
+  background:var(--card2);
+  color:var(--text);
+  padding:11px 19px;
+}
 .section-head{
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  margin:25px 0 15px;
+  align-items:center;
+  margin:24px 0 14px;
 }
 .section-head h2{margin:0}
 .section-head button{
@@ -175,58 +195,60 @@ a{color:inherit;text-decoration:none}
   color:var(--blue);
 }
 
-/* CARDS */
+/* VIDEO GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:20px 15px;
 }
 .video-card{
-  cursor:pointer;
   min-width:0;
+  cursor:pointer;
 }
 .thumb{
-  height:170px;
+  height:175px;
   border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   position:relative;
   overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:linear-gradient(135deg,#292929,#555);
 }
-.thumb .play{
-  width:55px;height:55px;
+.play{
+  width:55px;
+  height:55px;
   border-radius:50%;
-  background:#000b;
   display:flex;
   align-items:center;
   justify-content:center;
+  background:#000c;
+  color:white;
   font-size:22px;
 }
 .duration{
   position:absolute;
   right:7px;
   bottom:7px;
-  background:#000d;
   padding:4px 6px;
   border-radius:4px;
+  background:#000d;
+  color:white;
   font-size:12px;
 }
 .video-title{
+  margin-top:9px;
   font-weight:bold;
-  margin-top:10px;
   line-height:1.35;
 }
 .channel{
+  margin-top:6px;
   color:var(--muted);
   font-size:13px;
-  margin-top:6px;
 }
 .meta{
+  margin-top:4px;
   color:var(--muted);
   font-size:12px;
-  margin-top:4px;
 }
 
 /* SHORTS */
@@ -239,20 +261,11 @@ a{color:inherit;text-decoration:none}
 .short-thumb{
   height:310px;
   border-radius:13px;
-  background:linear-gradient(160deg,#30104b,#c9184a,#101010);
   display:flex;
   align-items:center;
   justify-content:center;
   position:relative;
   overflow:hidden;
-}
-.short-thumb .play{
-  background:#000b;
-  border-radius:50%;
-  width:55px;height:55px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
 }
 .short-title{
   margin-top:8px;
@@ -264,42 +277,45 @@ a{color:inherit;text-decoration:none}
   display:none;
   position:fixed;
   inset:0;
-  background:#000b;
   z-index:500;
+  background:#000c;
   align-items:center;
   justify-content:center;
   padding:18px;
 }
 .modal.show{display:flex}
 .modal-box{
+  position:relative;
   width:min(1000px,100%);
   max-height:94vh;
   overflow:auto;
-  background:var(--card);
   border:1px solid var(--border);
   border-radius:15px;
-  position:relative;
+  background:var(--card);
 }
 .close{
   position:absolute;
-  right:12px;
   top:10px;
-  z-index:5;
-  width:38px;height:38px;
+  right:10px;
+  z-index:20;
+  width:40px;
+  height:40px;
   border:0;
   border-radius:50%;
   background:#000b;
-  color:#fff;
-  font-size:22px;
+  color:white;
+  font-size:24px;
 }
 .modal-content{padding:25px}
 
 /* PLAYER */
-.player-wrap{background:#000}
+.player-wrap{
+  background:#000;
+}
 .player-wrap video{
+  display:block;
   width:100%;
   max-height:65vh;
-  display:block;
   background:#000;
 }
 .player-info{padding:20px}
@@ -308,28 +324,31 @@ a{color:inherit;text-decoration:none}
   display:flex;
   flex-wrap:wrap;
   gap:8px;
-  margin:15px 0;
+  margin:16px 0;
 }
 .action{
   border:1px solid var(--border);
+  border-radius:22px;
+  padding:9px 15px;
   background:var(--card2);
   color:var(--text);
-  border-radius:20px;
-  padding:9px 15px;
 }
-.action.active{background:var(--text);color:var(--bg)}
+.action.active{
+  background:var(--text);
+  color:var(--bg);
+}
 .subscribe{
+  border:0;
+  border-radius:22px;
+  padding:10px 18px;
   background:var(--accent);
   color:white;
-  border:0;
-  border-radius:20px;
-  padding:10px 18px;
   font-weight:bold;
 }
 .description{
-  background:var(--card2);
-  border-radius:10px;
   padding:15px;
+  border-radius:10px;
+  background:var(--card2);
   line-height:1.5;
 }
 
@@ -343,17 +362,18 @@ a{color:inherit;text-decoration:none}
 .comment-form input{
   flex:1;
   padding:12px 15px;
-  border-radius:22px;
   border:1px solid var(--border);
+  border-radius:22px;
   background:var(--bg);
   color:var(--text);
+  outline:none;
 }
 .comment-form button{
   border:0;
+  border-radius:22px;
+  padding:0 18px;
   background:var(--accent);
   color:white;
-  border-radius:20px;
-  padding:0 18px;
 }
 .comment{
   padding:13px 0;
@@ -382,6 +402,7 @@ a{color:inherit;text-decoration:none}
 .list-item{
   display:flex;
   gap:13px;
+  align-items:center;
   padding:10px;
   border-radius:10px;
   background:var(--card2);
@@ -392,19 +413,19 @@ a{color:inherit;text-decoration:none}
   height:95px;
   flex-shrink:0;
   border-radius:8px;
-  background:linear-gradient(135deg,#333,#777);
   display:flex;
   align-items:center;
   justify-content:center;
+  background:linear-gradient(135deg,#333,#777);
 }
 .list-info{flex:1}
-.list-info h3{margin:4px 0}
+.list-info h3{margin:3px 0}
 .small-btn{
   border:1px solid var(--border);
+  border-radius:7px;
+  padding:7px 11px;
   background:transparent;
   color:var(--text);
-  padding:6px 10px;
-  border-radius:7px;
 }
 
 /* FORMS */
@@ -420,166 +441,193 @@ a{color:inherit;text-decoration:none}
   width:100%;
   padding:12px;
   border:1px solid var(--border);
+  border-radius:8px;
   background:var(--bg);
   color:var(--text);
-  border-radius:8px;
 }
-.primary{
-  background:var(--accent);
-  color:white;
-  border:0;
-  padding:12px 20px;
-  border-radius:8px;
-  font-weight:bold;
+.form-group textarea{resize:vertical}
+.upload-preview{
+  display:none;
+  margin:10px 0;
 }
-.secondary{
-  background:var(--card2);
-  color:var(--text);
-  border:1px solid var(--border);
-  padding:12px 20px;
-  border-radius:8px;
-}
-.preview{
+.upload-preview video{
   width:100%;
   max-height:250px;
-  display:none;
-  background:#000;
   border-radius:10px;
-  margin:10px 0;
+  background:#000;
 }
 
 /* PROFILE */
 .profile-head{
   display:flex;
-  gap:18px;
   align-items:center;
+  gap:18px;
   padding:20px;
-  background:var(--card2);
   border-radius:12px;
+  background:var(--card2);
 }
 .avatar{
-  width:70px;height:70px;
+  width:70px;
+  height:70px;
+  flex-shrink:0;
   border-radius:50%;
-  background:linear-gradient(135deg,#ff1744,#7c4dff);
   display:flex;
   align-items:center;
   justify-content:center;
+  background:linear-gradient(135deg,#ff1744,#7c4dff);
+  color:white;
   font-size:30px;
   font-weight:bold;
 }
 .empty{
+  padding:50px 15px;
   text-align:center;
   color:var(--muted);
-  padding:50px 15px;
 }
 
 /* TOAST */
 .toast{
   position:fixed;
+  z-index:1000;
   bottom:80px;
   left:50%;
-  transform:translateX(-50%) translateY(20px);
-  background:#222;
-  color:white;
-  padding:12px 20px;
-  border-radius:25px;
-  z-index:1000;
+  transform:translate(-50%,20px);
   opacity:0;
   pointer-events:none;
+  padding:12px 20px;
+  border-radius:25px;
+  background:#222;
+  color:white;
   transition:.25s;
 }
 .toast.show{
   opacity:1;
-  transform:translateX(-50%) translateY(0);
+  transform:translate(-50%,0);
 }
 
-/* MOBILE */
+/* MOBILE NAV */
 .mobile-nav{
   display:none;
   position:fixed;
-  bottom:0;left:0;right:0;
-  height:62px;
   z-index:200;
-  background:var(--bg);
+  left:0;right:0;bottom:0;
+  height:62px;
   border-top:1px solid var(--border);
-  justify-content:space-around;
+  background:var(--bg);
 }
 .mobile-nav button{
   flex:1;
-  background:transparent;
   border:0;
+  background:transparent;
   color:var(--muted);
   font-size:11px;
 }
-.mobile-nav button b{
+.mobile-nav b{
   display:block;
-  font-size:20px;
   margin-bottom:2px;
-}
-.upload-preview{
-  display:none;
-  margin-top:10px;
-}
-.upload-preview video{
-  width:100%;
-  max-height:250px;
-  background:#000;
-  border-radius:10px;
+  font-size:20px;
 }
 
+/* MOBILE */
 @media(max-width:1100px){
   .grid{grid-template-columns:repeat(3,1fr)}
   .shorts-grid{grid-template-columns:repeat(4,1fr)}
 }
 @media(max-width:800px){
   .sidebar{display:none}
-  .main{margin-left:0;padding:76px 12px 80px}
-  .topbar{padding:0 10px;gap:8px}
-  .logo{min-width:auto;font-size:21px}
-  .top-actions .icon-btn:nth-child(1){display:none}
-  .search{max-width:none}
-  .grid{grid-template-columns:repeat(2,1fr);gap:15px 10px}
-  .thumb{height:130px}
-  .shorts-grid{grid-template-columns:repeat(3,1fr)}
-  .short-thumb{height:260px}
+  .main{
+    margin-left:0;
+    padding:76px 12px 80px;
+  }
   .mobile-nav{display:flex}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .shorts-grid{grid-template-columns:repeat(3,1fr)}
+  .thumb{height:130px}
+  .short-thumb{height:260px}
   .hero{padding:22px}
-  .hero h1{font-size:26px}
-  .list-thumb{width:125px;height:75px}
+  .hero h1{font-size:27px}
 }
 @media(max-width:500px){
-  .search input{font-size:13px}
+  .topbar{padding:0 9px;gap:7px}
+  .logo{
+    min-width:auto;
+    font-size:21px;
+  }
+  .search input{
+    font-size:13px;
+    padding:0 12px;
+  }
   .search button{width:45px}
-  .grid{grid-template-columns:1fr 1fr}
+  .top-actions .icon-btn:first-child{display:none}
+  .grid{gap:14px 9px}
+  .thumb{height:120px}
   .shorts-grid{grid-template-columns:repeat(2,1fr)}
   .short-thumb{height:230px}
-  .thumb{height:120px}
-  .video-title{font-size:14px}
-  .modal{padding:0}
-  .modal-box{border-radius:0;max-height:100vh;height:100vh}
+  .modal{
+    padding:0;
+  }
+  .modal-box{
+    width:100%;
+    height:100%;
+    max-height:100%;
+    border-radius:0;
+  }
+  .list-thumb{
+    width:125px;
+    height:75px;
+  }
 }
+
+/* SHORT PLAYER */
+.short-player-box{
+  width:min(500px,100%);
+  background:#000;
+}
+.short-player-box video{
+  width:100%;
+  max-height:78vh;
+  object-fit:cover;
+  background:#000;
+}
+.short-info{
+  padding:15px;
+  color:white;
+  background:#000;
+}
+.short-info h3{margin:0 0 7px}
 </style>
 </head>
 
 <body>
 
-<!-- TOPBAR -->
+<!-- ================= TOPBAR ================= -->
+
 <header class="topbar">
-  <div class="logo" onclick="goHome()" style="cursor:pointer">VY<span>Z</span>O</div>
+
+  <div class="logo" onclick="goHome()">
+    VY<span>Z</span>O
+  </div>
 
   <div class="search">
-    <input id="searchInput" type="search" placeholder="Search videos, channels..." onkeydown="if(event.key==='Enter')searchVideos()">
+    <input
+      id="searchInput"
+      type="search"
+      placeholder="Search videos, channels..."
+      onkeydown="if(event.key==='Enter')searchVideos()"
+    >
     <button onclick="searchVideos()">🔍</button>
   </div>
 
   <div class="top-actions">
-    <button class="icon-btn" onclick="openCreate()" title="Create">＋</button>
-    <button class="icon-btn" onclick="openNotifications()" title="Notifications">🔔</button>
-    <button class="icon-btn" onclick="openProfile()" title="Profile">👤</button>
+    <button class="icon-btn" onclick="openCreate()">＋</button>
+    <button class="icon-btn" onclick="openNotifications()">🔔</button>
+    <button class="icon-btn" onclick="openProfile()">👤</button>
   </div>
+
 </header>
 
-<!-- SIDEBAR -->
+<!-- ================= SIDEBAR ================= -->
+
 <aside class="sidebar">
 
   <button class="side-btn active" onclick="goHome()">🏠 Home</button>
@@ -591,6 +639,7 @@ a{color:inherit;text-decoration:none}
   <button class="side-btn" onclick="openLikedVideos()">👍 Liked videos</button>
 
   <div class="side-title">Explore</div>
+
   <button class="side-btn" onclick="filterCategory('Trending')">🔥 Trending</button>
   <button class="side-btn" onclick="filterCategory('Music')">🎵 Music</button>
   <button class="side-btn" onclick="filterCategory('Gaming')">🎮 Gaming</button>
@@ -601,16 +650,22 @@ a{color:inherit;text-decoration:none}
   <button class="side-btn" onclick="filterCategory('News')">📰 News</button>
 
   <div class="side-title">Create</div>
-  <button class="side-btn create-side" onclick="openCreate()">＋ Create</button>
+
+  <button class="side-btn create-side" onclick="openCreate()">
+    ＋ Create
+  </button>
 
   <button class="side-btn" onclick="openSettings()">⚙️ Settings</button>
   <button class="side-btn" onclick="openHelp()">❓ Help</button>
+
 </aside>
 
-<!-- MAIN -->
+<!-- ================= MAIN ================= -->
+
 <main class="main">
 
   <div class="categories">
+
     <button class="category active" onclick="filterCategory('All')">All</button>
     <button class="category" onclick="filterCategory('Music')">Music</button>
     <button class="category" onclick="filterCategory('Gaming')">Gaming</button>
@@ -621,130 +676,292 @@ a{color:inherit;text-decoration:none}
     <button class="category" onclick="filterCategory('Comedy')">Comedy</button>
     <button class="category" onclick="filterCategory('News')">News</button>
     <button class="category" onclick="filterCategory('Movies')">Movies</button>
+
   </div>
 
   <section class="hero">
+
     <h1>Watch. Create. Connect.</h1>
-    <p>Welcome to VYZO — your video platform.</p>
-    <button onclick="openCreate()">＋ Create your first video</button>
+
+    <p>
+      Welcome to VYZO — your video platform.
+    </p>
+
+    <button class="primary" onclick="openCreate()">
+      ＋ Create your first video
+    </button>
+
   </section>
 
   <div class="section-head">
-    <h2 id="feedTitle">Recommended videos</h2>
-    <button onclick="refreshFeed()">↻ Refresh</button>
+
+    <h2 id="feedTitle">
+      Recommended videos
+    </h2>
+
+    <button onclick="refreshFeed()">
+      ↻ Refresh
+    </button>
+
   </div>
 
   <div id="videoGrid" class="grid"></div>
 
   <div class="section-head">
+
     <h2>Shorts</h2>
-    <button onclick="openShorts()">View all →</button>
+
+    <button onclick="openShorts()">
+      View all →
+    </button>
+
   </div>
 
   <div id="shortsGrid" class="shorts-grid"></div>
 
 </main>
 
-<!-- MOBILE NAV -->
+<!-- ================= MOBILE NAV ================= -->
+
 <nav class="mobile-nav">
-  <button onclick="goHome()"><b>⌂</b>Home</button>
-  <button onclick="openShorts()"><b>▶</b>Shorts</button>
-  <button onclick="openCreate()"><b>＋</b>Create</button>
-  <button onclick="openSubscriptions()"><b>📺</b>Subs</button>
-  <button onclick="openProfile()"><b>👤</b>You</button>
+
+  <button onclick="goHome()">
+    <b>⌂</b>
+    Home
+  </button>
+
+  <button onclick="openShorts()">
+    <b>▶</b>
+    Shorts
+  </button>
+
+  <button onclick="openCreate()">
+    <b>＋</b>
+    Create
+  </button>
+
+  <button onclick="openSubscriptions()">
+    <b>📺</b>
+    Subs
+  </button>
+
+  <button onclick="openProfile()">
+    <b>👤</b>
+    You
+  </button>
+
 </nav>
 
-<!-- VIDEO MODAL -->
+<!-- ================= VIDEO MODAL ================= -->
+
 <div id="videoModal" class="modal">
+
   <div class="modal-box">
-    <button class="close" onclick="closeModal('videoModal')">×</button>
+
+    <button class="close" onclick="closeModal('videoModal')">
+      ×
+    </button>
 
     <div class="player-wrap">
-      <video id="mainPlayer" controls playsinline></video>
+
+      <video
+        id="mainPlayer"
+        controls
+        playsinline
+        preload="metadata"
+      ></video>
+
     </div>
 
     <div class="player-info">
+
       <h2 id="playerTitle"></h2>
+
       <div class="meta" id="playerMeta"></div>
 
       <div class="actions">
-        <button class="action" id="likeBtn" onclick="likeCurrent()">👍 <span id="likeCount">0</span></button>
-        <button class="action" id="dislikeBtn" onclick="dislikeCurrent()">👎</button>
-        <button class="action" onclick="shareCurrent()">↗ Share</button>
-        <button class="action" onclick="addCurrentToWatchLater()">⏱ Watch later</button>
-        <button class="action" onclick="addCurrentToPlaylist()">＋ Playlist</button>
-        <button class="subscribe" id="subscribeBtn" onclick="subscribeCurrent()">Subscribe</button>
+
+        <button class="action" id="likeBtn" onclick="likeCurrent()">
+          👍 <span id="likeCount">0</span>
+        </button>
+
+        <button class="action" id="dislikeBtn" onclick="dislikeCurrent()">
+          👎
+        </button>
+
+        <button class="action" onclick="shareCurrent()">
+          ↗ Share
+        </button>
+
+        <button class="action" onclick="addCurrentToWatchLater()">
+          ⏱ Watch later
+        </button>
+
+        <button class="action" onclick="addCurrentToPlaylist()">
+          ＋ Playlist
+        </button>
+
+        <button class="subscribe" id="subscribeBtn" onclick="subscribeCurrent()">
+          Subscribe
+        </button>
+
+        <button class="action" onclick="openCurrentChannel()">
+          Channel
+        </button>
+
       </div>
 
       <div class="description" id="playerDescription"></div>
 
       <div class="comments">
+
         <h3>Comments</h3>
 
         <div class="comment-form">
-          <input id="commentInput" placeholder="Add a comment...">
-          <button onclick="addComment()">Post</button>
+
+          <input
+            id="commentInput"
+            placeholder="Add a comment..."
+          >
+
+          <button onclick="addComment()">
+            Post
+          </button>
+
         </div>
 
         <div id="commentList"></div>
+
       </div>
+
     </div>
+
   </div>
+
 </div>
 
-<!-- SHORT MODAL -->
+<!-- ================= SHORT MODAL ================= -->
+
 <div id="shortModal" class="modal">
-  <div class="modal-box" style="max-width:500px;background:#000">
-    <button class="close" onclick="closeModal('shortModal')">×</button>
 
-    <video id="shortPlayer" controls playsinline
-      style="width:100%;max-height:80vh;object-fit:cover;background:#000"></video>
+  <div class="short-player-box">
 
-    <div style="padding:15px;color:white">
-      <h3 id="shortTitle" style="margin:0 0 8px"></h3>
+    <button class="close" onclick="closeModal('shortModal')">
+      ×
+    </button>
+
+    <video
+      id="shortPlayer"
+      controls
+      playsinline
+      preload="metadata"
+    ></video>
+
+    <div class="short-info">
+
+      <h3 id="shortTitle"></h3>
+
       <div id="shortMeta" style="color:#aaa"></div>
 
       <div class="actions">
-        <button class="action" onclick="likeCurrentShort()">👍 <span id="shortLikeCount">0</span></button>
-        <button class="action" onclick="shareCurrentShort()">↗ Share</button>
-        <button class="subscribe" id="shortSubscribeBtn" onclick="subscribeCurrentShort()">Subscribe</button>
-        <button class="action" onclick="previousShort()">←</button>
-        <button class="action" onclick="nextShort()">→</button>
+
+        <button class="action" onclick="likeCurrentShort()">
+          👍 <span id="shortLikeCount">0</span>
+        </button>
+
+        <button class="action" onclick="shareCurrentShort()">
+          ↗ Share
+        </button>
+
+        <button
+          class="subscribe"
+          id="shortSubscribeBtn"
+          onclick="subscribeCurrentShort()"
+        >
+          Subscribe
+        </button>
+
+        <button class="action" onclick="previousShort()">
+          ← Previous
+        </button>
+
+        <button class="action" onclick="nextShort()">
+          Next →
+        </button>
+
       </div>
+
     </div>
+
   </div>
+
 </div>
 
-<!-- CREATE MODAL -->
+<!-- ================= CREATE ================= -->
+
 <div id="createModal" class="modal">
+
   <div class="modal-box">
-    <button class="close" onclick="closeModal('createModal')">×</button>
+
+    <button class="close" onclick="closeModal('createModal')">
+      ×
+    </button>
+
     <div class="modal-content">
 
       <h2>Create</h2>
 
       <div class="form-group">
+
         <label>Content type</label>
+
         <select id="uploadType" onchange="uploadTypeChanged()">
-          <option value="video">Video</option>
-          <option value="short">Short</option>
-          <option value="live">Live</option>
+
+          <option value="video">
+            Video
+          </option>
+
+          <option value="short">
+            Short
+          </option>
+
+          <option value="live">
+            Live
+          </option>
+
         </select>
+
       </div>
 
       <div class="form-group">
+
         <label>Title</label>
-        <input id="uploadTitle" placeholder="Enter video title">
+
+        <input
+          id="uploadTitle"
+          placeholder="Enter video title"
+        >
+
       </div>
 
       <div class="form-group">
+
         <label>Description</label>
-        <textarea id="uploadDescription" rows="4" placeholder="Tell viewers about your video"></textarea>
+
+        <textarea
+          id="uploadDescription"
+          rows="4"
+          placeholder="Tell viewers about your video"
+        ></textarea>
+
       </div>
 
       <div class="form-group">
+
         <label>Category</label>
+
         <select id="uploadCategory">
+
           <option>Technology</option>
           <option>Education</option>
           <option>Gaming</option>
@@ -755,1398 +972,3186 @@ a{color:inherit;text-decoration:none}
           <option>News</option>
           <option>Movies</option>
           <option>Other</option>
+
         </select>
+
       </div>
 
       <div class="form-group" id="fileGroup">
-        <label>Select video file</label>
-        <input id="uploadFile" type="file" accept="video/*" onchange="previewUpload(event)">
+
+        <label>Select video</label>
+
+        <input
+          id="uploadFile"
+          type="file"
+          accept="video/*"
+          onchange="previewUpload(event)"
+        >
+
       </div>
 
       <div class="upload-preview" id="uploadPreview">
-        <video id="uploadPreviewVideo" controls></video>
+
+        <video
+          id="uploadPreviewVideo"
+          controls
+        ></video>
+
       </div>
 
-      <p id="liveNotice" style="display:none;color:var(--muted)">
-        Live broadcasting requires a streaming backend/WebRTC server.
-        This static GitHub Pages version cannot broadcast to other users.
+      <p
+        id="liveNotice"
+        style="display:none;color:var(--muted)"
+      >
+        Live broadcasting needs a real streaming backend/WebRTC
+        server. This GitHub Pages version cannot broadcast to other
+        users.
       </p>
 
-      <button class="primary" onclick="startUpload()">Publish</button>
+      <button class="primary" onclick="startUpload()">
+        Publish
+      </button>
+
     </div>
+
   </div>
+
 </div>
 
-<!-- PROFILE -->
+<!-- ================= PROFILE ================= -->
+
 <div id="profileModal" class="modal">
+
   <div class="modal-box">
-    <button class="close" onclick="closeModal('profileModal')">×</button>
+
+    <button class="close" onclick="closeModal('profileModal')">
+      ×
+    </button>
+
     <div class="modal-content">
 
       <div class="profile-head">
-        <div class="avatar" id="profileAvatar">S</div>
-        <div>
-          <h2 id="profileNameDisplay">Sahil</h2>
-          <div id="profileHandleDisplay" style="color:var(--muted)">@sahil</div>
-          <div id="profileStats" style="color:var(--muted);margin-top:5px"></div>
+
+        <div class="avatar" id="profileAvatar">
+          S
         </div>
+
+        <div>
+
+          <h2 id="profileNameDisplay">
+            Sahil
+          </h2>
+
+          <div
+            id="profileHandleDisplay"
+            style="color:var(--muted)"
+          >
+            @sahil
+          </div>
+
+          <div
+            id="profileStats"
+            style="color:var(--muted);margin-top:5px"
+          ></div>
+
+        </div>
+
       </div>
 
       <hr style="border-color:var(--border);margin:20px 0">
 
       <div class="form-group">
+
         <label>Name</label>
+
         <input id="profileNameInput">
+
       </div>
 
       <div class="form-group">
+
         <label>Handle</label>
+
         <input id="profileHandleInput">
+
       </div>
 
-      <button class="primary" onclick="saveProfile()">Save profile</button>
-      <button class="secondary" onclick="openMyChannel()" style="margin-left:5px">My channel</button>
+      <button class="primary" onclick="saveProfile()">
+        Save profile
+      </button>
+
+      <button
+        class="secondary"
+        onclick="openMyChannel()"
+        style="margin-left:5px"
+      >
+        My channel
+      </button>
 
     </div>
+
   </div>
+
 </div>
 
-<!-- NOTIFICATIONS -->
+<!-- ================= NOTIFICATIONS ================= -->
+
 <div id="notificationModal" class="modal">
+
   <div class="modal-box">
-    <button class="close" onclick="closeModal('notificationModal')">×</button>
+
+    <button class="close" onclick="closeModal('notificationModal')">
+      ×
+    </button>
+
     <div class="modal-content">
+
       <h2>Notifications</h2>
+
       <div id="notificationList"></div>
+
     </div>
+
   </div>
+
 </div>
 
-<!-- SETTINGS -->
+<!-- ================= SETTINGS ================= -->
+
 <div id="settingsModal" class="modal">
+
   <div class="modal-box">
-    <button class="close" onclick="closeModal('settingsModal')">×</button>
+
+    <button class="close" onclick="closeModal('settingsModal')">
+      ×
+    </button>
+
     <div class="modal-content">
+
       <h2>Settings</h2>
 
       <div class="list">
+
         <div class="list-item">
+
           <div>
             <b>Appearance</b>
-            <div style="color:var(--muted)">Switch between light and dark mode.</div>
+            <div style="color:var(--muted)">
+              Light / Dark mode
+            </div>
           </div>
-          <button class="small-btn" onclick="toggleTheme()">Toggle</button>
+
+          <button class="small-btn" onclick="toggleTheme()">
+            Toggle
+          </button>
+
         </div>
 
         <div class="list-item">
+
           <div>
             <b>Language</b>
-            <div style="color:var(--muted)" id="languageText">English</div>
+            <div
+              id="languageText"
+              style="color:var(--muted)"
+            >
+              English
+            </div>
           </div>
-          <button class="small-btn" onclick="toggleLanguage()">Hindi / English</button>
+
+          <button class="small-btn" onclick="toggleLanguage()">
+            Hindi / English
+          </button>
+
         </div>
 
         <div class="list-item">
+
           <div>
+
             <b>Clear local data</b>
-            <div style="color:var(--muted)">Remove likes, comments, history, playlists and subscriptions.</div>
+
+            <div style="color:var(--muted)">
+              Clear likes, history, comments,
+              subscriptions and playlists.
+            </div>
+
           </div>
-          <button class="small-btn" onclick="clearLocalData()">Clear</button>
+
+          <button class="small-btn" onclick="clearLocalData()">
+            Clear
+          </button>
+
         </div>
+
       </div>
+
     </div>
+
   </div>
+
 </div>
 
-<!-- PAGE/LIBRARY MODAL -->
+<!-- ================= LIBRARY ================= -->
+
 <div id="pageModal" class="modal">
+
   <div class="modal-box">
-    <button class="close" onclick="closeModal('pageModal')">×</button>
+
+    <button class="close" onclick="closeModal('pageModal')">
+      ×
+    </button>
+
     <div class="modal-content">
+
       <h2 id="pageTitle"></h2>
+
       <div id="pageContent"></div>
+
     </div>
+
   </div>
+
 </div>
 
-<!-- CHANNEL MODAL -->
+<!-- ================= CHANNEL ================= -->
+
 <div id="channelModal" class="modal">
+
   <div class="modal-box">
-    <button class="close" onclick="closeModal('channelModal')">×</button>
+
+    <button class="close" onclick="closeModal('channelModal')">
+      ×
+    </button>
+
     <div class="modal-content">
+
       <div class="profile-head">
-        <div class="avatar" id="channelAvatar">C</div>
-        <div style="flex:1">
-          <h2 id="channelName"></h2>
-          <div id="channelSubs" style="color:var(--muted)"></div>
-          <button class="subscribe" id="channelSubscribeBtn" onclick="toggleChannelFromPage()">Subscribe</button>
+
+        <div class="avatar" id="channelAvatar">
+          C
         </div>
+
+        <div style="flex:1">
+
+          <h2 id="channelName"></h2>
+
+          <div
+            id="channelSubs"
+            style="color:var(--muted)"
+          ></div>
+
+          <button
+            class="subscribe"
+            id="channelSubscribeBtn"
+            onclick="toggleChannelFromPage()"
+          >
+            Subscribe
+          </button>
+
+        </div>
+
       </div>
 
       <h3>Videos</h3>
+
       <div id="channelVideos" class="grid"></div>
+
     </div>
+
   </div>
+
 </div>
 
-<!-- HELP -->
+<!-- ================= HELP ================= -->
+
 <div id="helpModal" class="modal">
+
   <div class="modal-box">
-    <button class="close" onclick="closeModal('helpModal')">×</button>
+
+    <button class="close" onclick="closeModal('helpModal')">
+      ×
+    </button>
+
     <div class="modal-content">
+
       <h2>VYZO Help</h2>
-      <p>▶ Tap any video to open the real video player.</p>
-      <p>📺 Subscribe saves the channel subscription on this device.</p>
-      <p>👍 Likes, comments, history and Watch Later are saved locally.</p>
-      <p>＋ Create lets you select a video from your phone and publish it to your local VYZO feed.</p>
-      <p>📂 Uploaded videos are stored locally using your browser.</p>
-      <p>☁️ Real multi-user accounts, cloud uploads and live streaming require a backend such as Firebase.</p>
+
+      <p>▶ Tap any video to open the actual player.</p>
+      <p>▶ Every Short has its own video.</p>
+      <p>📺 Subscribe / Unsubscribe works locally.</p>
+      <p>👍 Like / Dislike works locally.</p>
+      <p>💬 Comments and replies work locally.</p>
+      <p>⏱ Watch Later works locally.</p>
+      <p>🕘 History is saved automatically.</p>
+      <p>📂 Playlists can be created.</p>
+      <p>🔍 Search works across videos and channels.</p>
+      <p>＋ Upload lets you play your own selected video.</p>
+      <p>☁️ Real multi-user cloud functionality requires Firebase/backend.</p>
+
     </div>
+
   </div>
+
 </div>
 
 <div id="toast" class="toast"></div>
 
 <script>
-/* =========================================================
-   VYZO FINAL MASTER FRONTEND
-   ========================================================= */
 
-const DEMO_VIDEO =
-  "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4";
+/* ============================================================
+   VYZO FINAL MASTER FIXED VERSION
+   ============================================================ */
 
-/* ---------------- DATA ---------------- */
+/* ============================================================
+   DIFFERENT REAL DEMO VIDEO FILES
+   ============================================================ */
+
+const VIDEO_1 =
+"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4";
+
+const VIDEO_2 =
+"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4";
+
+const VIDEO_3 =
+"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4";
+
+const VIDEO_4 =
+"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4";
+
+const VIDEO_5 =
+"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4";
+
+const VIDEO_6 =
+"https://storage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4";
+
+const VIDEO_7 =
+"https://storage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4";
+
+const VIDEO_8 =
+"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerKnockKnock.mp4";
+
+
+/* ============================================================
+   VIDEO DATA
+   ============================================================ */
 
 let videos = [
-  {
-    id:1,title:"Welcome to VYZO — Watch. Create. Connect.",
-    channel:"VYZO Official",category:"Technology",views:12000,
-    age:"2 days ago",duration:"3:42",
-    description:"Welcome to VYZO. Watch videos, create content and connect with creators.",
-    videoUrl:DEMO_VIDEO
-  },
-  {
-    id:2,title:"Top 10 Amazing Places You Should Visit",
-    channel:"Travel India",category:"Travel",views:84000,
-    age:"1 day ago",duration:"8:21",
-    description:"Explore amazing destinations and travel ideas.",
-    videoUrl:DEMO_VIDEO
-  },
-  {
-    id:3,title:"Latest Gaming Challenge",
-    channel:"Game Zone",category:"Gaming",views:156000,
-    age:"5 hours ago",duration:"12:10",
-    description:"A fun gaming challenge for everyone.",
-    videoUrl:DEMO_VIDEO
-  },
-  {
-    id:4,title:"Learn Something New Every Day",
-    channel:"Study Hub",category:"Education",views:42000,
-    age:"3 days ago",duration:"15:34",
-    description:"Improve your knowledge with simple educational content.",
-    videoUrl:DEMO_VIDEO
-  },
-  {
-    id:5,title:"Best Music Hits — New Playlist",
-    channel:"VYZO Music",category:"Music",views:1200000,
-    age:"4 days ago",duration:"4:18",
-    description:"Music and entertainment on VYZO.",
-    videoUrl:DEMO_VIDEO
-  },
-  {
-    id:6,title:"Football Skills You Need To Know",
-    channel:"Sports Arena",category:"Sports",views:328000,
-    age:"6 hours ago",duration:"7:55",
-    description:"Football skills and techniques.",
-    videoUrl:DEMO_VIDEO
-  },
-  {
-    id:7,title:"Technology That Will Change The Future",
-    channel:"Tech World",category:"Technology",views:215000,
-    age:"1 week ago",duration:"11:02",
-    description:"Technology explained in a simple way.",
-    videoUrl:DEMO_VIDEO
-  },
-  {
-    id:8,title:"Funny Moments You Can't Stop Watching",
-    channel:"Fun Factory",category:"Comedy",views:670000,
-    age:"2 days ago",duration:"9:40",
-    description:"Funny moments and entertainment.",
-    videoUrl:DEMO_VIDEO
-  },
-  {
-    id:9,title:"Daily News Update",
-    channel:"VYZO News",category:"News",views:95000,
-    age:"1 hour ago",duration:"6:12",
-    description:"Daily news and updates.",
-    videoUrl:DEMO_VIDEO
-  },
-  {
-    id:10,title:"Movie Discussion & Review",
-    channel:"Cinema Talk",category:"Movies",views:73000,
-    age:"8 hours ago",duration:"14:27",
-    description:"Movies, reviews and discussions.",
-    videoUrl:DEMO_VIDEO
-  },
-  {
-    id:11,title:"Easy Life Hacks Everyone Should Know",
-    channel:"Daily Life",category:"Education",views:302000,
-    age:"5 days ago",duration:"5:20",
-    description:"Useful life hacks.",
-    videoUrl:DEMO_VIDEO
-  },
-  {
-    id:12,title:"The Ultimate VYZO Creator Guide",
-    channel:"VYZO Academy",category:"Technology",views:18000,
-    age:"1 day ago",duration:"10:18",
-    description:"Learn how to create content for VYZO.",
-    videoUrl:DEMO_VIDEO
-  }
+
+{
+id:1,
+title:"Welcome to VYZO — Watch. Create. Connect.",
+channel:"VYZO Official",
+category:"Technology",
+views:12000,
+age:"2 days ago",
+duration:"3:42",
+description:"Welcome to VYZO — Watch. Create. Connect.",
+videoUrl:VIDEO_1
+},
+
+{
+id:2,
+title:"Top 10 Amazing Places You Should Visit",
+channel:"Travel India",
+category:"Travel",
+views:84000,
+age:"1 day ago",
+duration:"8:21",
+description:"Travel inspiration and amazing destinations.",
+videoUrl:VIDEO_2
+},
+
+{
+id:3,
+title:"Latest Gaming Challenge",
+channel:"Game Zone",
+category:"Gaming",
+views:156000,
+age:"5 hours ago",
+duration:"12:10",
+description:"Gaming challenge and entertainment.",
+videoUrl:VIDEO_3
+},
+
+{
+id:4,
+title:"Learn Something New Every Day",
+channel:"Study Hub",
+category:"Education",
+views:42000,
+age:"3 days ago",
+duration:"15:34",
+description:"Learn useful things every day.",
+videoUrl:VIDEO_4
+},
+
+{
+id:5,
+title:"Best Music Hits — New Playlist",
+channel:"VYZO Music",
+category:"Music",
+views:1200000,
+age:"4 days ago",
+duration:"4:18",
+description:"Music and entertainment.",
+videoUrl:VIDEO_5
+},
+
+{
+id:6,
+title:"Football Skills You Need To Know",
+channel:"Sports Arena",
+category:"Sports",
+views:328000,
+age:"6 hours ago",
+duration:"7:55",
+description:"Football skills and techniques.",
+videoUrl:VIDEO_6
+},
+
+{
+id:7,
+title:"Technology That Will Change The Future",
+channel:"Tech World",
+category:"Technology",
+views:215000,
+age:"1 week ago",
+duration:"11:02",
+description:"Technology explained simply.",
+videoUrl:VIDEO_7
+},
+
+{
+id:8,
+title:"Funny Moments You Can't Stop Watching",
+channel:"Fun Factory",
+category:"Comedy",
+views:670000,
+age:"2 days ago",
+duration:"9:40",
+description:"Funny moments and entertainment.",
+videoUrl:VIDEO_8
+},
+
+{
+id:9,
+title:"Daily News Update",
+channel:"VYZO News",
+category:"News",
+views:95000,
+age:"1 hour ago",
+duration:"6:12",
+description:"Daily news and updates.",
+videoUrl:VIDEO_1
+},
+
+{
+id:10,
+title:"Movie Discussion & Review",
+channel:"Cinema Talk",
+category:"Movies",
+views:73000,
+age:"8 hours ago",
+duration:"14:27",
+description:"Movies, reviews and discussions.",
+videoUrl:VIDEO_2
+},
+
+{
+id:11,
+title:"Easy Life Hacks Everyone Should Know",
+channel:"Daily Life",
+category:"Education",
+views:302000,
+age:"5 days ago",
+duration:"5:20",
+description:"Useful life hacks.",
+videoUrl:VIDEO_3
+},
+
+{
+id:12,
+title:"The Ultimate VYZO Creator Guide",
+channel:"VYZO Academy",
+category:"Technology",
+views:18000,
+age:"1 day ago",
+duration:"10:18",
+description:"Learn how to create content.",
+videoUrl:VIDEO_4
+}
+
 ];
+
+
+/* ============================================================
+   SHORTS — EVERY SHORT HAS DIFFERENT VIDEO
+   ============================================================ */
 
 let shorts = [
-  {id:101,title:"Amazing skills 🔥",channel:"VYZO Shorts",views:2400000,videoUrl:DEMO_VIDEO},
-  {id:102,title:"Wait for it 😱",channel:"Fun Factory",views:845000,videoUrl:DEMO_VIDEO},
-  {id:103,title:"Football magic ⚽",channel:"Sports Arena",views:1800000,videoUrl:DEMO_VIDEO},
-  {id:104,title:"Funny moment 😂",channel:"Fun Factory",views:4200000,videoUrl:DEMO_VIDEO},
-  {id:105,title:"Tech trick 💡",channel:"Tech World",views:620000,videoUrl:DEMO_VIDEO},
-  {id:106,title:"Travel view 🌍",channel:"Travel India",views:932000,videoUrl:DEMO_VIDEO}
+
+{
+id:101,
+title:"Amazing skills 🔥",
+channel:"VYZO Shorts",
+views:2400000,
+likes:0,
+videoUrl:VIDEO_1
+},
+
+{
+id:102,
+title:"Wait for it 😱",
+channel:"Fun Factory",
+views:845000,
+likes:0,
+videoUrl:VIDEO_2
+},
+
+{
+id:103,
+title:"Football magic ⚽",
+channel:"Sports Arena",
+views:1800000,
+likes:0,
+videoUrl:VIDEO_3
+},
+
+{
+id:104,
+title:"Funny moment 😂",
+channel:"Fun Factory",
+views:4200000,
+likes:0,
+videoUrl:VIDEO_4
+},
+
+{
+id:105,
+title:"Tech trick 💡",
+channel:"Tech World",
+views:620000,
+likes:0,
+videoUrl:VIDEO_5
+},
+
+{
+id:106,
+title:"Travel view 🌍",
+channel:"Travel India",
+views:932000,
+likes:0,
+videoUrl:VIDEO_6
+},
+
+{
+id:107,
+title:"Big adventure 🚗",
+channel:"VYZO Adventure",
+views:510000,
+likes:0,
+videoUrl:VIDEO_7
+},
+
+{
+id:108,
+title:"Crazy moment 😲",
+channel:"VYZO Fun",
+views:710000,
+likes:0,
+videoUrl:VIDEO_8
+}
+
 ];
 
-/* ---------------- STATE ---------------- */
 
-const DEFAULT_STATE = {
-  liked:[],
-  disliked:[],
-  subscriptions:[],
-  watchLater:[],
-  history:[],
-  playlists:{},
-  comments:{},
-  notifications:[],
-  theme:"dark",
-  language:"en",
-  profile:{
-    name:"Sahil",
-    handle:"sahil"
-  }
+/* ============================================================
+   STATE
+   ============================================================ */
+
+const DEFAULT_STATE={
+
+liked:[],
+disliked:[],
+subscriptions:[],
+watchLater:[],
+history:[],
+playlists:{},
+comments:{},
+notifications:[],
+theme:"dark",
+language:"en",
+
+profile:{
+name:"Sahil",
+handle:"sahil"
+}
+
 };
 
-let state = loadState();
-let currentVideoId = null;
-let currentShortIndex = 0;
-let currentChannel = null;
-let activeCategory = "All";
-let uploadedVideos = [];
+let state=loadState();
 
-/* ---------------- STORAGE ---------------- */
+let currentVideoId=null;
+let currentShortIndex=0;
+let currentChannel=null;
+let activeCategory="All";
+
+let uploadedVideos=[];
+
+
+/* ============================================================
+   LOCAL STORAGE
+   ============================================================ */
 
 function loadState(){
-  try{
-    const x = JSON.parse(localStorage.getItem("VYZO_STATE"));
-    return x ? {...DEFAULT_STATE,...x} : structuredClone(DEFAULT_STATE);
-  }catch(e){
-    return structuredClone(DEFAULT_STATE);
-  }
+
+try{
+
+const saved=
+JSON.parse(localStorage.getItem("VYZO_STATE"));
+
+if(saved){
+
+return {
+...structuredClone(DEFAULT_STATE),
+...saved,
+profile:{
+...DEFAULT_STATE.profile,
+...(saved.profile||{})
 }
+};
+
+}
+
+}catch(e){}
+
+return structuredClone(DEFAULT_STATE);
+
+}
+
 
 function saveState(){
-  localStorage.setItem("VYZO_STATE",JSON.stringify(state));
+
+localStorage.setItem(
+"VYZO_STATE",
+JSON.stringify(state)
+);
+
 }
 
-/* ---------------- INDEXED DB UPLOADS ---------------- */
 
-const DB_NAME="VYZO_UPLOADS_DB";
-const STORE_NAME="videos";
-
-function openDB(){
-  return new Promise((resolve,reject)=>{
-    if(!window.indexedDB){
-      resolve(null);
-      return;
-    }
-
-    const req=indexedDB.open(DB_NAME,1);
-
-    req.onupgradeneeded=()=>{
-      if(!req.result.objectStoreNames.contains(STORE_NAME)){
-        req.result.createObjectStore(STORE_NAME,{keyPath:"id"});
-      }
-    };
-
-    req.onsuccess=()=>resolve(req.result);
-    req.onerror=()=>reject(req.error);
-  });
-}
-
-async function saveUploadedVideo(obj,file){
-  try{
-    const db=await openDB();
-    if(!db)return;
-
-    await new Promise((resolve,reject)=>{
-      const tx=db.transaction(STORE_NAME,"readwrite");
-      tx.objectStore(STORE_NAME).put({...obj,blob:file});
-      tx.oncomplete=resolve;
-      tx.onerror=()=>reject(tx.error);
-    });
-  }catch(e){}
-}
-
-async function loadUploadedVideos(){
-  try{
-    const db=await openDB();
-    if(!db)return;
-
-    const records=await new Promise((resolve,reject)=>{
-      const tx=db.transaction(STORE_NAME,"readonly");
-      const req=tx.objectStore(STORE_NAME).getAll();
-      req.onsuccess=()=>resolve(req.result||[]);
-      req.onerror=()=>reject(req.error);
-    });
-
-    records.forEach(r=>{
-      const videoUrl=URL.createObjectURL(r.blob);
-      uploadedVideos.push({
-        ...r,
-        videoUrl
-      });
-    });
-
-    videos=[...videos,...uploadedVideos];
-    renderVideos();
-  }catch(e){}
-}
-
-/* ---------------- HELPERS ---------------- */
-
-function escapeHTML(str=""){
-  return String(str)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-}
-
-function formatViews(n){
-  n=Number(n)||0;
-  if(n>=1000000)return (n/1000000).toFixed(n>=10000000?0:1)+"M";
-  if(n>=1000)return (n/1000).toFixed(n>=100000?0:1)+"K";
-  return String(n);
-}
+/* ============================================================
+   HELPERS
+   ============================================================ */
 
 function getVideo(id){
-  return videos.find(v=>String(v.id)===String(id));
+
+return videos.find(
+v=>String(v.id)===String(id)
+);
+
 }
 
-function getChannelVideos(channel){
-  return videos.filter(v=>v.channel===channel);
+
+function formatViews(number){
+
+number=Number(number)||0;
+
+if(number>=1000000){
+
+return(
+number/1000000
+).toFixed(
+number>=10000000?0:1
+)+"M";
+
 }
 
-function isSubscribed(channel){
-  return state.subscriptions.includes(channel);
+if(number>=1000){
+
+return(
+number/1000
+).toFixed(
+number>=100000?0:1
+)+"K";
+
 }
 
-function showToast(message){
-  const t=document.getElementById("toast");
-  t.textContent=message;
-  t.classList.add("show");
-  clearTimeout(window.toastTimer);
-  window.toastTimer=setTimeout(()=>t.classList.remove("show"),2200);
+return String(number);
+
 }
 
-function closeModal(id){
-  document.getElementById(id).classList.remove("show");
 
-  if(id==="videoModal"){
-    document.getElementById("mainPlayer").pause();
-    document.getElementById("mainPlayer").removeAttribute("src");
-  }
+function escapeHTML(value=""){
 
-  if(id==="shortModal"){
-    document.getElementById("shortPlayer").pause();
-    document.getElementById("shortPlayer").removeAttribute("src");
-  }
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
 }
 
-function openModal(id){
-  document.getElementById(id).classList.add("show");
+
+function escapeJS(value=""){
+
+return String(value)
+.replaceAll("\\","\\\\")
+.replaceAll("'","\\'");
+
 }
 
-function addNotification(text){
-  state.notifications.unshift({
-    id:Date.now(),
-    text,
-    time:new Date().toLocaleString()
-  });
-
-  state.notifications=state.notifications.slice(0,50);
-  saveState();
-}
-
-/* ---------------- RENDER HOME ---------------- */
-
-function renderVideos(list=videos){
-  const grid=document.getElementById("videoGrid");
-
-  if(!list.length){
-    grid.innerHTML='<div class="empty" style="grid-column:1/-1">No videos found.</div>';
-    return;
-  }
-
-  grid.innerHTML=list.map(v=>`
-    <div class="video-card" onclick="openVideo(${v.id})">
-
-      <div class="thumb" style="background:linear-gradient(135deg,${colorFor(v.id)},#111)">
-        <div class="play">▶</div>
-        <span class="duration">${escapeHTML(v.duration||"Video")}</span>
-      </div>
-
-      <div class="video-title">${escapeHTML(v.title)}</div>
-      <div class="channel">${escapeHTML(v.channel)}</div>
-      <div class="meta">${formatViews(v.views)} views • ${escapeHTML(v.age||"Just now")}</div>
-
-    </div>
-  `).join("");
-}
-
-function renderShorts(){
-  const grid=document.getElementById("shortsGrid");
-
-  grid.innerHTML=shorts.map((s,i)=>`
-    <div class="short-card" onclick="openShort(${s.id})">
-      <div class="short-thumb" style="background:linear-gradient(160deg,${colorFor(s.id)},#111)">
-        <div class="play">▶</div>
-      </div>
-      <div class="short-title">${escapeHTML(s.title)}</div>
-      <div class="meta">${formatViews(s.views)} views</div>
-    </div>
-  `).join("");
-}
 
 function colorFor(id){
-  const colors=["#311b92","#00695c","#ad1457","#e65100","#1565c0","#6a1b9a","#2e7d32"];
-  return colors[Number(id)%colors.length];
+
+const colors=[
+"#311b92",
+"#00695c",
+"#ad1457",
+"#e65100",
+"#1565c0",
+"#6a1b9a",
+"#2e7d32",
+"#4527a0"
+];
+
+return colors[
+Number(id)%colors.length
+];
+
 }
 
-/* ---------------- SEARCH / CATEGORY ---------------- */
 
-function searchVideos(){
-  const q=document.getElementById("searchInput").value.trim().toLowerCase();
+function showToast(message){
 
-  if(!q){
-    activeCategory="All";
-    document.getElementById("feedTitle").textContent="Recommended videos";
-    renderVideos(videos);
-    return;
-  }
+const toast=
+document.getElementById("toast");
 
-  const result=videos.filter(v=>
-    v.title.toLowerCase().includes(q) ||
-    v.channel.toLowerCase().includes(q) ||
-    v.category.toLowerCase().includes(q) ||
-    (v.description||"").toLowerCase().includes(q)
-  );
+toast.textContent=message;
 
-  document.getElementById("feedTitle").textContent=`Search results for "${q}"`;
-  renderVideos(result);
+toast.classList.add("show");
+
+clearTimeout(window.vyzoToast);
+
+window.vyzoToast=
+setTimeout(
+()=>toast.classList.remove("show"),
+2200
+);
+
 }
 
-function filterCategory(category){
-  activeCategory=category;
 
-  document.querySelectorAll(".category").forEach(b=>{
-    b.classList.toggle("active",b.textContent.trim()===category);
-  });
+/* ============================================================
+   MODALS
+   ============================================================ */
 
-  if(category==="All"){
-    document.getElementById("feedTitle").textContent="Recommended videos";
-    renderVideos(videos);
-    return;
-  }
+function openModal(id){
 
-  if(category==="Trending"){
-    const result=[...videos].sort((a,b)=>b.views-a.views);
-    document.getElementById("feedTitle").textContent="Trending";
-    renderVideos(result);
-    return;
-  }
+document
+.getElementById(id)
+.classList.add("show");
 
-  document.getElementById("feedTitle").textContent=category;
-  renderVideos(videos.filter(v=>v.category===category));
 }
 
-function refreshFeed(){
-  const list=activeCategory==="All"
-    ? [...videos]
-    : activeCategory==="Trending"
-      ? [...videos].sort((a,b)=>b.views-a.views)
-      : videos.filter(v=>v.category===activeCategory);
 
-  list.sort(()=>Math.random()-0.5);
-  renderVideos(list);
-  showToast("Feed refreshed");
+function closeModal(id){
+
+const modal=
+document.getElementById(id);
+
+if(modal)
+modal.classList.remove("show");
+
+if(id==="videoModal"){
+
+const player=
+document.getElementById("mainPlayer");
+
+player.pause();
+player.removeAttribute("src");
+player.load();
+
 }
 
-function goHome(){
-  closeAllModals();
-  window.scrollTo({top:0,behavior:"smooth"});
-  document.getElementById("feedTitle").textContent="Recommended videos";
-  renderVideos(videos);
+if(id==="shortModal"){
+
+const player=
+document.getElementById("shortPlayer");
+
+player.pause();
+player.removeAttribute("src");
+player.load();
+
 }
+
+}
+
 
 function closeAllModals(){
-  document.querySelectorAll(".modal").forEach(m=>m.classList.remove("show"));
-  const vp=document.getElementById("mainPlayer");
-  const sp=document.getElementById("shortPlayer");
-  if(vp)vp.pause();
-  if(sp)sp.pause();
+
+document
+.querySelectorAll(".modal")
+.forEach(m=>m.classList.remove("show"));
+
+const v=
+document.getElementById("mainPlayer");
+
+const s=
+document.getElementById("shortPlayer");
+
+if(v)v.pause();
+if(s)s.pause();
+
 }
 
-/* ---------------- VIDEO PLAYER ---------------- */
+
+/* ============================================================
+   NOTIFICATIONS
+   ============================================================ */
+
+function addNotification(text){
+
+state.notifications.unshift({
+
+id:Date.now(),
+
+text:text,
+
+time:new Date().toLocaleString()
+
+});
+
+state.notifications=
+state.notifications.slice(0,50);
+
+saveState();
+
+}
+
+
+/* ============================================================
+   HOME RENDER
+   ============================================================ */
+
+function renderVideos(list=videos){
+
+const grid=
+document.getElementById("videoGrid");
+
+if(!list.length){
+
+grid.innerHTML=
+`<div class="empty" style="grid-column:1/-1">
+No videos found.
+</div>`;
+
+return;
+
+}
+
+grid.innerHTML=
+list.map(v=>`
+
+<div
+class="video-card"
+onclick="openVideo(${v.id})"
+>
+
+<div
+class="thumb"
+style="background:linear-gradient(
+135deg,
+${colorFor(v.id)},
+#111
+)"
+>
+
+<div class="play">
+▶
+</div>
+
+<span class="duration">
+${escapeHTML(v.duration||"Video")}
+</span>
+
+</div>
+
+<div class="video-title">
+${escapeHTML(v.title)}
+</div>
+
+<div class="channel">
+${escapeHTML(v.channel)}
+</div>
+
+<div class="meta">
+${formatViews(v.views)} views •
+${escapeHTML(v.age||"Just now")}
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+function renderShorts(){
+
+const grid=
+document.getElementById("shortsGrid");
+
+grid.innerHTML=
+shorts.map(s=>`
+
+<div
+class="short-card"
+onclick="openShort(${s.id})"
+>
+
+<div
+class="short-thumb"
+style="background:linear-gradient(
+160deg,
+${colorFor(s.id)},
+#111
+)"
+>
+
+<div class="play">
+▶
+</div>
+
+</div>
+
+<div class="short-title">
+${escapeHTML(s.title)}
+</div>
+
+<div class="meta">
+${formatViews(s.views)} views
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+/* ============================================================
+   SEARCH
+   ============================================================ */
+
+function searchVideos(){
+
+const input=
+document.getElementById("searchInput");
+
+const query=
+input.value.trim().toLowerCase();
+
+if(!query){
+
+document.getElementById("feedTitle")
+.textContent="Recommended videos";
+
+renderVideos(videos);
+
+return;
+
+}
+
+const results=
+videos.filter(v=>
+
+v.title.toLowerCase().includes(query)||
+
+v.channel.toLowerCase().includes(query)||
+
+v.category.toLowerCase().includes(query)||
+
+(v.description||"")
+.toLowerCase()
+.includes(query)
+
+);
+
+document.getElementById("feedTitle")
+.textContent=
+`Search results for "${query}"`;
+
+renderVideos(results);
+
+}
+
+
+/* ============================================================
+   CATEGORY
+   ============================================================ */
+
+function filterCategory(category){
+
+activeCategory=category;
+
+document
+.querySelectorAll(".category")
+.forEach(btn=>{
+
+btn.classList.toggle(
+"active",
+btn.textContent.trim()===category
+);
+
+});
+
+if(category==="All"){
+
+document.getElementById("feedTitle")
+.textContent="Recommended videos";
+
+renderVideos(videos);
+
+return;
+
+}
+
+if(category==="Trending"){
+
+const list=
+[...videos]
+.sort((a,b)=>b.views-a.views);
+
+document.getElementById("feedTitle")
+.textContent="Trending";
+
+renderVideos(list);
+
+return;
+
+}
+
+const list=
+videos.filter(
+v=>v.category===category
+);
+
+document.getElementById("feedTitle")
+.textContent=category;
+
+renderVideos(list);
+
+}
+
+
+/* ============================================================
+   REFRESH
+   ============================================================ */
+
+function refreshFeed(){
+
+let list=[...videos];
+
+if(activeCategory!=="All"){
+
+if(activeCategory==="Trending"){
+
+list.sort((a,b)=>b.views-a.views);
+
+}else{
+
+list=
+list.filter(
+v=>v.category===activeCategory
+);
+
+}
+
+}
+
+list.sort(
+()=>Math.random()-0.5
+);
+
+renderVideos(list);
+
+showToast("Feed refreshed");
+
+}
+
+
+/* ============================================================
+   HOME
+   ============================================================ */
+
+function goHome(){
+
+closeAllModals();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+activeCategory="All";
+
+document.getElementById("feedTitle")
+.textContent="Recommended videos";
+
+renderVideos(videos);
+
+}
+
+
+/* ============================================================
+   VIDEO PLAYER
+   ============================================================ */
 
 function openVideo(id){
-  const v=getVideo(id);
-  if(!v)return;
 
-  currentVideoId=v.id;
+const video=
+getVideo(id);
 
-  v.views=(Number(v.views)||0)+1;
+if(!video)return;
 
-  state.history=state.history.filter(x=>x!==v.id);
-  state.history.unshift(v.id);
-  state.history=state.history.slice(0,100);
-  saveState();
+currentVideoId=
+video.id;
 
-  document.getElementById("playerTitle").textContent=v.title;
 
-  document.getElementById("playerMeta").textContent=
-    `${v.channel} • ${formatViews(v.views)} views • ${v.age||"Just now"}`;
+/* VIEW COUNT */
 
-  document.getElementById("playerDescription").textContent=
-    v.description||"No description available.";
+video.views=
+(Number(video.views)||0)+1;
 
-  document.getElementById("likeCount").textContent=
-    v.likes || 0;
 
-  updateSubscribeButton();
-  renderComments();
+/* HISTORY */
 
-  const player=document.getElementById("mainPlayer");
-  player.src=v.videoUrl||DEMO_VIDEO;
-  player.load();
+state.history=
+state.history.filter(
+x=>x!==video.id
+);
 
-  openModal("videoModal");
+state.history.unshift(video.id);
 
-  player.play().catch(()=>{});
+state.history=
+state.history.slice(0,100);
 
-  renderVideos();
+saveState();
+
+
+/* UI */
+
+document.getElementById("playerTitle")
+.textContent=video.title;
+
+document.getElementById("playerMeta")
+.textContent=
+`${video.channel} • ${formatViews(video.views)} views • ${video.age||"Just now"}`;
+
+document.getElementById("playerDescription")
+.textContent=
+video.description||"No description available.";
+
+document.getElementById("likeCount")
+.textContent=
+video.likes||0;
+
+updateVideoButtons();
+
+renderComments();
+
+
+/* PLAYER */
+
+const player=
+document.getElementById("mainPlayer");
+
+player.src=
+video.videoUrl||VIDEO_1;
+
+player.load();
+
+openModal("videoModal");
+
+player.play().catch(()=>{});
+
+renderVideos();
+
 }
+
+
+/* ============================================================
+   VIDEO LIKE
+   ============================================================ */
 
 function likeCurrent(){
-  const v=getVideo(currentVideoId);
-  if(!v)return;
 
-  const already=state.liked.includes(v.id);
+const video=
+getVideo(currentVideoId);
 
-  if(already){
-    state.liked=state.liked.filter(x=>x!==v.id);
-    v.likes=Math.max(0,(v.likes||0)-1);
-  }else{
-    state.liked.push(v.id);
-    v.likes=(v.likes||0)+1;
-    state.disliked=state.disliked.filter(x=>x!==v.id);
-    addNotification(`You liked "${v.title}"`);
-  }
+if(!video)return;
 
-  saveState();
-  updateLikeButtons();
+const liked=
+state.liked.includes(video.id);
+
+if(liked){
+
+state.liked=
+state.liked.filter(
+x=>x!==video.id
+);
+
+video.likes=
+Math.max(
+0,
+(video.likes||0)-1
+);
+
+}else{
+
+state.liked.push(video.id);
+
+video.likes=
+(video.likes||0)+1;
+
+state.disliked=
+state.disliked.filter(
+x=>x!==video.id
+);
+
+addNotification(
+`You liked "${video.title}"`
+);
+
 }
+
+saveState();
+
+updateVideoButtons();
+
+}
+
+
+/* ============================================================
+   DISLIKE
+   ============================================================ */
 
 function dislikeCurrent(){
-  const v=getVideo(currentVideoId);
-  if(!v)return;
 
-  if(state.disliked.includes(v.id)){
-    state.disliked=state.disliked.filter(x=>x!==v.id);
-  }else{
-    state.disliked.push(v.id);
-    state.liked=state.liked.filter(x=>x!==v.id);
-  }
+const video=
+getVideo(currentVideoId);
 
-  saveState();
-  updateLikeButtons();
-  showToast("Dislike saved");
+if(!video)return;
+
+if(state.disliked.includes(video.id)){
+
+state.disliked=
+state.disliked.filter(
+x=>x!==video.id
+);
+
+}else{
+
+state.disliked.push(video.id);
+
+state.liked=
+state.liked.filter(
+x=>x!==video.id
+);
+
 }
 
-function updateLikeButtons(){
-  const v=getVideo(currentVideoId);
-  if(!v)return;
+saveState();
 
-  document.getElementById("likeCount").textContent=v.likes||0;
+updateVideoButtons();
 
-  document.getElementById("likeBtn").classList.toggle(
-    "active",state.liked.includes(v.id)
-  );
+showToast("Dislike saved");
 
-  document.getElementById("dislikeBtn").classList.toggle(
-    "active",state.disliked.includes(v.id)
-  );
 }
 
-function updateSubscribeButton(){
-  const v=getVideo(currentVideoId);
-  if(!v)return;
 
-  const btn=document.getElementById("subscribeBtn");
+/* ============================================================
+   VIDEO BUTTONS
+   ============================================================ */
 
-  if(isSubscribed(v.channel)){
-    btn.textContent="✓ Subscribed";
-    btn.style.background="#444";
-  }else{
-    btn.textContent="Subscribe";
-    btn.style.background="var(--accent)";
-  }
+function updateVideoButtons(){
 
-  updateLikeButtons();
+const video=
+getVideo(currentVideoId);
+
+if(!video)return;
+
+document.getElementById("likeCount")
+.textContent=
+video.likes||0;
+
+document.getElementById("likeBtn")
+.classList.toggle(
+"active",
+state.liked.includes(video.id)
+);
+
+document.getElementById("dislikeBtn")
+.classList.toggle(
+"active",
+state.disliked.includes(video.id)
+);
+
+const subscribe=
+document.getElementById("subscribeBtn");
+
+if(state.subscriptions.includes(video.channel)){
+
+subscribe.textContent=
+"✓ Subscribed";
+
+subscribe.style.background="#444";
+
+}else{
+
+subscribe.textContent=
+"Subscribe";
+
+subscribe.style.background=
+"var(--accent)";
+
 }
+
+}
+
+
+/* ============================================================
+   SUBSCRIBE
+   ============================================================ */
 
 function subscribeCurrent(){
-  const v=getVideo(currentVideoId);
-  if(!v)return;
 
-  toggleSubscription(v.channel);
-  updateSubscribeButton();
+const video=
+getVideo(currentVideoId);
+
+if(!video)return;
+
+toggleSubscription(video.channel);
+
+updateVideoButtons();
+
 }
+
 
 function toggleSubscription(channel){
-  if(isSubscribed(channel)){
-    state.subscriptions=state.subscriptions.filter(x=>x!==channel);
-    showToast(`Unsubscribed from ${channel}`);
-  }else{
-    state.subscriptions.push(channel);
-    addNotification(`You subscribed to ${channel}`);
-    showToast(`Subscribed to ${channel}`);
-  }
 
-  saveState();
+if(state.subscriptions.includes(channel)){
+
+state.subscriptions=
+state.subscriptions.filter(
+x=>x!==channel
+);
+
+showToast(
+`Unsubscribed from ${channel}`
+);
+
+}else{
+
+state.subscriptions.push(channel);
+
+addNotification(
+`You subscribed to ${channel}`
+);
+
+showToast(
+`Subscribed to ${channel}`
+);
+
 }
 
-/* ---------------- SHARE ---------------- */
+saveState();
+
+}
+
+
+/* ============================================================
+   SHARE
+   ============================================================ */
 
 async function shareCurrent(){
-  const v=getVideo(currentVideoId);
-  if(!v)return;
 
-  const url=location.href.split("#")[0]+"#video="+v.id;
+const video=
+getVideo(currentVideoId);
 
-  try{
-    if(navigator.share){
-      await navigator.share({
-        title:v.title,
-        text:`Watch ${v.title} on VYZO`,
-        url
-      });
-    }else{
-      await navigator.clipboard.writeText(url);
-      showToast("Video link copied");
-    }
-  }catch(e){}
+if(!video)return;
+
+const url=
+location.href.split("#")[0]+
+"#video="+video.id;
+
+try{
+
+if(navigator.share){
+
+await navigator.share({
+
+title:video.title,
+
+text:
+`Watch ${video.title} on VYZO`,
+
+url:url
+
+});
+
+}else{
+
+await navigator.clipboard.writeText(url);
+
+showToast(
+"Video link copied"
+);
+
 }
 
-async function shareCurrentShort(){
-  const s=shorts[currentShortIndex];
-  if(!s)return;
+}catch(e){}
 
-  const url=location.href.split("#")[0]+"#short="+s.id;
-
-  try{
-    if(navigator.share){
-      await navigator.share({
-        title:s.title,
-        text:`Watch this VYZO Short`,
-        url
-      });
-    }else{
-      await navigator.clipboard.writeText(url);
-      showToast("Short link copied");
-    }
-  }catch(e){}
 }
 
-/* ---------------- WATCH LATER ---------------- */
+
+/* ============================================================
+   WATCH LATER
+   ============================================================ */
 
 function addCurrentToWatchLater(){
-  if(currentVideoId===null)return;
 
-  if(state.watchLater.includes(currentVideoId)){
-    state.watchLater=state.watchLater.filter(x=>x!==currentVideoId);
-    showToast("Removed from Watch later");
-  }else{
-    state.watchLater.unshift(currentVideoId);
-    showToast("Added to Watch later");
-  }
+if(currentVideoId===null)return;
 
-  saveState();
+if(state.watchLater.includes(currentVideoId)){
+
+state.watchLater=
+state.watchLater.filter(
+x=>x!==currentVideoId
+);
+
+showToast(
+"Removed from Watch later"
+);
+
+}else{
+
+state.watchLater.unshift(
+currentVideoId
+);
+
+showToast(
+"Added to Watch later"
+);
+
 }
 
-/* ---------------- PLAYLISTS ---------------- */
+saveState();
+
+}
+
+
+/* ============================================================
+   PLAYLIST
+   ============================================================ */
 
 function addCurrentToPlaylist(){
-  const v=getVideo(currentVideoId);
-  if(!v)return;
 
-  const names=Object.keys(state.playlists);
+const video=
+getVideo(currentVideoId);
 
-  if(!names.length){
-    const name=prompt("Enter new playlist name:");
-    if(!name)return;
+if(!video)return;
 
-    state.playlists[name]=[v.id];
-    saveState();
-    showToast("Playlist created and video added");
-    return;
-  }
+const names=
+Object.keys(state.playlists);
 
-  const choice=prompt(
-    "Enter playlist name:\n\nExisting: "+names.join(", ")
-  );
+if(!names.length){
 
-  if(!choice)return;
+const name=
+prompt("Enter playlist name:");
 
-  if(!state.playlists[choice]){
-    state.playlists[choice]=[];
-  }
+if(!name)return;
 
-  if(!state.playlists[choice].includes(v.id)){
-    state.playlists[choice].push(v.id);
-  }
+state.playlists[name]=[
+video.id
+];
 
-  saveState();
-  showToast("Added to playlist");
+saveState();
+
+showToast(
+"Playlist created"
+);
+
+return;
+
 }
 
-function openPlaylists(){
-  const names=Object.keys(state.playlists);
+const name=
+prompt(
+"Enter playlist name:\n\n"+
+names.join("\n")
+);
 
-  let html=`
-    <button class="primary" onclick="createPlaylist()">＋ New playlist</button>
-    <div style="height:15px"></div>
-  `;
+if(!name)return;
 
-  if(!names.length){
-    html+=`<div class="empty">No playlists yet.<br>Create one and add videos to it.</div>`;
-  }else{
-    html+=names.map(name=>`
-      <div class="list-item" onclick="openPlaylist('${escapeJS(name)}')">
-        <div style="font-size:35px">📂</div>
-        <div>
-          <h3>${escapeHTML(name)}</h3>
-          <div class="meta">${state.playlists[name].length} videos</div>
-        </div>
-      </div>
-    `).join("");
-  }
+if(!state.playlists[name]){
 
-  openPage("Playlists",html);
+state.playlists[name]=[];
+
 }
 
-function createPlaylist(){
-  const name=prompt("Playlist name:");
-  if(!name)return;
+if(
+!state.playlists[name]
+.includes(video.id)
+){
 
-  if(!state.playlists[name]){
-    state.playlists[name]=[];
-    saveState();
-    showToast("Playlist created");
-  }
+state.playlists[name]
+.push(video.id);
 
-  openPlaylists();
 }
 
-function openPlaylist(name){
-  const ids=state.playlists[name]||[];
-  const list=ids.map(id=>getVideo(id)).filter(Boolean);
+saveState();
 
-  openPage(
-    name,
-    renderListHTML(list,`Playlist "${escapeHTML(name)}" is empty.`)
-  );
+showToast(
+"Added to playlist"
+);
+
 }
 
-function escapeJS(s){
-  return String(s).replaceAll("\\","\\\\").replaceAll("'","\\'");
-}
 
-/* ---------------- COMMENTS ---------------- */
+/* ============================================================
+   COMMENTS
+   ============================================================ */
 
 function renderComments(){
-  const list=document.getElementById("commentList");
-  const comments=state.comments[currentVideoId]||[];
 
-  if(!comments.length){
-    list.innerHTML='<div style="color:var(--muted)">No comments yet. Be the first.</div>';
-    return;
-  }
+const box=
+document.getElementById("commentList");
 
-  list.innerHTML=comments.map(c=>`
-    <div class="comment">
-      <div class="comment-name">${escapeHTML(c.name)}</div>
-      <div class="comment-text">${escapeHTML(c.text)}</div>
+const comments=
+state.comments[currentVideoId]||[];
 
-      <div class="comment-actions">
-        <button onclick="replyComment('${escapeJS(c.id)}')">Reply</button>
-        <button onclick="deleteComment('${escapeJS(c.id)}')">Delete</button>
-      </div>
+if(!comments.length){
 
-      ${(c.replies||[]).map(r=>`
-        <div class="reply">
-          <b>${escapeHTML(r.name)}</b>
-          <div>${escapeHTML(r.text)}</div>
-        </div>
-      `).join("")}
+box.innerHTML=
+`<div style="color:var(--muted)">
+No comments yet. Be the first.
+</div>`;
 
-    </div>
-  `).join("");
+return;
+
 }
+
+box.innerHTML=
+comments.map(c=>`
+
+<div class="comment">
+
+<div class="comment-name">
+${escapeHTML(c.name)}
+</div>
+
+<div class="comment-text">
+${escapeHTML(c.text)}
+</div>
+
+<div class="comment-actions">
+
+<button
+onclick="replyComment('${escapeJS(c.id)}')"
+>
+Reply
+</button>
+
+<button
+onclick="deleteComment('${escapeJS(c.id)}')"
+>
+Delete
+</button>
+
+</div>
+
+${
+(c.replies||[])
+.map(r=>`
+
+<div class="reply">
+
+<b>
+${escapeHTML(r.name)}
+</b>
+
+<div>
+${escapeHTML(r.text)}
+</div>
+
+</div>
+
+`).join("")
+}
+
+</div>
+
+`).join("");
+
+}
+
 
 function addComment(){
-  const input=document.getElementById("commentInput");
-  const text=input.value.trim();
 
-  if(!text){
-    showToast("Write a comment first");
-    return;
-  }
+const input=
+document.getElementById("commentInput");
 
-  if(!state.comments[currentVideoId]){
-    state.comments[currentVideoId]=[];
-  }
+const text=
+input.value.trim();
 
-  state.comments[currentVideoId].unshift({
-    id:String(Date.now()),
-    name:state.profile.name,
-    text,
-    replies:[]
-  });
+if(!text){
 
-  input.value="";
-  saveState();
-  renderComments();
+showToast(
+"Write a comment first"
+);
 
-  const v=getVideo(currentVideoId);
-  addNotification(`You commented on "${v.title}"`);
+return;
+
 }
+
+if(!state.comments[currentVideoId]){
+
+state.comments[currentVideoId]=[];
+
+}
+
+state.comments[currentVideoId]
+.unshift({
+
+id:String(Date.now()),
+
+name:state.profile.name,
+
+text:text,
+
+replies:[]
+
+});
+
+input.value="";
+
+saveState();
+
+renderComments();
+
+const video=
+getVideo(currentVideoId);
+
+addNotification(
+`You commented on "${video.title}"`
+);
+
+}
+
 
 function replyComment(id){
-  const text=prompt("Write your reply:");
-  if(!text)return;
 
-  const comments=state.comments[currentVideoId]||[];
-  const c=comments.find(x=>String(x.id)===String(id));
+const text=
+prompt("Write your reply:");
 
-  if(!c)return;
+if(!text)return;
 
-  c.replies=c.replies||[];
+const comments=
+state.comments[currentVideoId]||[];
 
-  c.replies.push({
-    id:String(Date.now()),
-    name:state.profile.name,
-    text
-  });
+const comment=
+comments.find(
+c=>String(c.id)===String(id)
+);
 
-  saveState();
-  renderComments();
-  showToast("Reply added");
+if(!comment)return;
+
+comment.replies=
+comment.replies||[];
+
+comment.replies.push({
+
+id:String(Date.now()),
+
+name:state.profile.name,
+
+text:text
+
+});
+
+saveState();
+
+renderComments();
+
+showToast(
+"Reply added"
+);
+
 }
+
 
 function deleteComment(id){
-  const comments=state.comments[currentVideoId]||[];
 
-  state.comments[currentVideoId]=comments.filter(
-    x=>String(x.id)!==String(id)
-  );
+const comments=
+state.comments[currentVideoId]||[];
 
-  saveState();
-  renderComments();
+state.comments[currentVideoId]=
+comments.filter(
+c=>String(c.id)!==String(id)
+);
+
+saveState();
+
+renderComments();
+
 }
 
-/* ---------------- SHORTS ---------------- */
 
-function openShort(id){
-  const index=shorts.findIndex(s=>String(s.id)===String(id));
-  if(index<0)return;
+/* ============================================================
+   CHANNEL
+   ============================================================ */
 
-  currentShortIndex=index;
-  loadShort();
-  openModal("shortModal");
+function openCurrentChannel(){
 
-  document.getElementById("shortPlayer").play().catch(()=>{});
+const video=
+getVideo(currentVideoId);
+
+if(!video)return;
+
+openChannel(video.channel);
+
 }
 
-function loadShort(){
-  const s=shorts[currentShortIndex];
-  if(!s)return;
-
-  const player=document.getElementById("shortPlayer");
-
-  document.getElementById("shortTitle").textContent=s.title;
-  document.getElementById("shortMeta").textContent=
-    `${s.channel} • ${formatViews(s.views)} views`;
-
-  document.getElementById("shortLikeCount").textContent=s.likes||0;
-
-  const btn=document.getElementById("shortSubscribeBtn");
-
-  if(isSubscribed(s.channel)){
-    btn.textContent="✓ Subscribed";
-    btn.style.background="#444";
-  }else{
-    btn.textContent="Subscribe";
-    btn.style.background="var(--accent)";
-  }
-
-  player.src=s.videoUrl||DEMO_VIDEO;
-  player.load();
-}
-
-function nextShort(){
-  currentShortIndex=(currentShortIndex+1)%shorts.length;
-  loadShort();
-  document.getElementById("shortPlayer").play().catch(()=>{});
-}
-
-function previousShort(){
-  currentShortIndex=
-    (currentShortIndex-1+shorts.length)%shorts.length;
-
-  loadShort();
-  document.getElementById("shortPlayer").play().catch(()=>{});
-}
-
-function openShorts(){
-  if(!shorts.length){
-    showToast("No Shorts available");
-    return;
-  }
-
-  openShort(shorts[0].id);
-}
-
-function likeCurrentShort(){
-  const s=shorts[currentShortIndex];
-  if(!s)return;
-
-  s.likes=(s.likes||0)+1;
-  document.getElementById("shortLikeCount").textContent=s.likes;
-  showToast("Short liked");
-}
-
-function subscribeCurrentShort(){
-  const s=shorts[currentShortIndex];
-  if(!s)return;
-
-  toggleSubscription(s.channel);
-  loadShort();
-}
-
-/* ---------------- LIBRARY ---------------- */
-
-function renderListHTML(list,emptyText){
-  if(!list.length){
-    return `<div class="empty">${emptyText}</div>`;
-  }
-
-  return `
-    <div class="list">
-      ${list.map(v=>`
-        <div class="list-item" onclick="openVideo(${v.id})">
-          <div class="list-thumb">
-            <span style="font-size:25px">▶</span>
-          </div>
-
-          <div class="list-info">
-            <h3>${escapeHTML(v.title)}</h3>
-            <div>${escapeHTML(v.channel)}</div>
-            <div class="meta">${formatViews(v.views)} views</div>
-          </div>
-        </div>
-      `).join("")}
-    </div>
-  `;
-}
-
-function openPage(title,html){
-  document.getElementById("pageTitle").textContent=title;
-  document.getElementById("pageContent").innerHTML=html;
-  openModal("pageModal");
-}
-
-function openHistory(){
-  const list=state.history.map(id=>getVideo(id)).filter(Boolean);
-  openPage("History",renderListHTML(list,"Your watch history is empty."));
-}
-
-function openWatchLater(){
-  const list=state.watchLater.map(id=>getVideo(id)).filter(Boolean);
-  openPage("Watch later",renderListHTML(list,"No videos saved for later."));
-}
-
-function openLikedVideos(){
-  const list=state.liked.map(id=>getVideo(id)).filter(Boolean);
-  openPage("Liked videos",renderListHTML(list,"You haven't liked any videos yet."));
-}
-
-function openSubscriptions(){
-  const channels=state.subscriptions;
-
-  if(!channels.length){
-    openPage(
-      "Subscriptions",
-      `<div class="empty">
-        You haven't subscribed to any channels yet.<br>
-        Open a video and tap Subscribe.
-      </div>`
-    );
-    return;
-  }
-
-  let html=channels.map(channel=>`
-    <div class="list-item" onclick="openChannel('${escapeJS(channel)}')">
-      <div class="avatar">${escapeHTML(channel.charAt(0))}</div>
-      <div>
-        <h3>${escapeHTML(channel)}</h3>
-        <div class="meta">${getChannelVideos(channel).length} videos</div>
-      </div>
-    </div>
-  `).join("");
-
-  openPage("Subscriptions",`<div class="list">${html}</div>`);
-}
-
-/* ---------------- CHANNEL ---------------- */
 
 function openChannel(channel){
-  currentChannel=channel;
 
-  const list=getChannelVideos(channel);
+currentChannel=channel;
 
-  document.getElementById("channelName").textContent=channel;
-  document.getElementById("channelAvatar").textContent=channel.charAt(0).toUpperCase();
-  document.getElementById("channelSubs").textContent=
-    `${list.length} videos • ${isSubscribed(channel)?"Subscribed":"Not subscribed"}`;
+const list=
+videos.filter(
+v=>v.channel===channel
+);
 
-  const btn=document.getElementById("channelSubscribeBtn");
-  btn.textContent=isSubscribed(channel)?"✓ Subscribed":"Subscribe";
-  btn.style.background=isSubscribed(channel)?"#444":"var(--accent)";
+document.getElementById("channelName")
+.textContent=channel;
 
-  document.getElementById("channelVideos").innerHTML=
-    list.map(v=>`
-      <div class="video-card" onclick="openVideo(${v.id})">
-        <div class="thumb" style="background:linear-gradient(135deg,${colorFor(v.id)},#111)">
-          <div class="play">▶</div>
-          <span class="duration">${escapeHTML(v.duration||"Video")}</span>
-        </div>
-        <div class="video-title">${escapeHTML(v.title)}</div>
-        <div class="meta">${formatViews(v.views)} views</div>
-      </div>
-    `).join("");
+document.getElementById("channelAvatar")
+.textContent=
+channel.charAt(0).toUpperCase();
 
-  openModal("channelModal");
+document.getElementById("channelSubs")
+.textContent=
+`${list.length} videos • ${
+state.subscriptions.includes(channel)
+?"Subscribed"
+:"Not subscribed"
+}`;
+
+const btn=
+document.getElementById(
+"channelSubscribeBtn"
+);
+
+if(state.subscriptions.includes(channel)){
+
+btn.textContent=
+"✓ Subscribed";
+
+btn.style.background="#444";
+
+}else{
+
+btn.textContent=
+"Subscribe";
+
+btn.style.background=
+"var(--accent)";
+
 }
+
+document.getElementById(
+"channelVideos"
+).innerHTML=
+
+list.map(v=>`
+
+<div
+class="video-card"
+onclick="openVideo(${v.id})"
+>
+
+<div
+class="thumb"
+style="background:linear-gradient(
+135deg,
+${colorFor(v.id)},
+#111
+)"
+>
+
+<div class="play">▶</div>
+
+<span class="duration">
+${escapeHTML(v.duration||"Video")}
+</span>
+
+</div>
+
+<div class="video-title">
+${escapeHTML(v.title)}
+</div>
+
+<div class="meta">
+${formatViews(v.views)} views
+</div>
+
+</div>
+
+`).join("");
+
+openModal("channelModal");
+
+}
+
 
 function toggleChannelFromPage(){
-  if(!currentChannel)return;
 
-  toggleSubscription(currentChannel);
-  openChannel(currentChannel);
+if(!currentChannel)return;
+
+toggleSubscription(
+currentChannel
+);
+
+openChannel(
+currentChannel
+);
+
 }
 
-function openMyChannel(){
-  closeModal("profileModal");
-  openChannel(state.profile.name);
+
+/* ============================================================
+   SHORTS
+   ============================================================ */
+
+function openShort(id){
+
+const index=
+shorts.findIndex(
+s=>String(s.id)===String(id)
+);
+
+if(index<0)return;
+
+currentShortIndex=index;
+
+loadShort();
+
+openModal("shortModal");
+
+document.getElementById(
+"shortPlayer"
+).play().catch(()=>{});
+
 }
 
-/* ---------------- PROFILE ---------------- */
+
+function loadShort(){
+
+const short=
+shorts[currentShortIndex];
+
+if(!short)return;
+
+const player=
+document.getElementById(
+"shortPlayer"
+);
+
+document.getElementById(
+"shortTitle"
+).textContent=
+short.title;
+
+document.getElementById(
+"shortMeta"
+).textContent=
+`${short.channel} • ${formatViews(short.views)} views`;
+
+document.getElementById(
+"shortLikeCount"
+).textContent=
+short.likes||0;
+
+const subscribe=
+document.getElementById(
+"shortSubscribeBtn"
+);
+
+if(
+state.subscriptions.includes(
+short.channel
+)
+){
+
+subscribe.textContent=
+"✓ Subscribed";
+
+subscribe.style.background="#444";
+
+}else{
+
+subscribe.textContent=
+"Subscribe";
+
+subscribe.style.background=
+"var(--accent)";
+
+}
+
+player.src=
+short.videoUrl;
+
+player.load();
+
+}
+
+
+function nextShort(){
+
+if(!shorts.length)return;
+
+currentShortIndex=
+(currentShortIndex+1)
+%shorts.length;
+
+loadShort();
+
+document.getElementById(
+"shortPlayer"
+).play().catch(()=>{});
+
+}
+
+
+function previousShort(){
+
+if(!shorts.length)return;
+
+currentShortIndex=
+(currentShortIndex-1+
+shorts.length)
+%shorts.length;
+
+loadShort();
+
+document.getElementById(
+"shortPlayer"
+).play().catch(()=>{});
+
+}
+
+
+function openShorts(){
+
+if(!shorts.length){
+
+showToast(
+"No Shorts available"
+);
+
+return;
+
+}
+
+openShort(
+shorts[0].id
+);
+
+}
+
+
+function likeCurrentShort(){
+
+const short=
+shorts[currentShortIndex];
+
+if(!short)return;
+
+short.likes=
+(short.likes||0)+1;
+
+document.getElementById(
+"shortLikeCount"
+).textContent=
+short.likes;
+
+showToast(
+"Short liked"
+);
+
+}
+
+
+function subscribeCurrentShort(){
+
+const short=
+shorts[currentShortIndex];
+
+if(!short)return;
+
+toggleSubscription(
+short.channel
+);
+
+loadShort();
+
+}
+
+
+async function shareCurrentShort(){
+
+const short=
+shorts[currentShortIndex];
+
+if(!short)return;
+
+const url=
+location.href.split("#")[0]+
+"#short="+short.id;
+
+try{
+
+if(navigator.share){
+
+await navigator.share({
+
+title:short.title,
+
+text:"Watch this VYZO Short",
+
+url:url
+
+});
+
+}else{
+
+await navigator.clipboard.writeText(url);
+
+showToast(
+"Short link copied"
+);
+
+}
+
+}catch(e){}
+
+}
+
+
+/* ============================================================
+   LIBRARY
+   ============================================================ */
+
+function renderListHTML(list,emptyText){
+
+if(!list.length){
+
+return `
+<div class="empty">
+${emptyText}
+</div>
+`;
+
+}
+
+return `
+
+<div class="list">
+
+${list.map(v=>`
+
+<div
+class="list-item"
+onclick="openVideo(${v.id})"
+>
+
+<div class="list-thumb">
+<span style="font-size:25px">
+▶
+</span>
+</div>
+
+<div class="list-info">
+
+<h3>
+${escapeHTML(v.title)}
+</h3>
+
+<div>
+${escapeHTML(v.channel)}
+</div>
+
+<div class="meta">
+${formatViews(v.views)} views
+</div>
+
+</div>
+
+</div>
+
+`).join("")}
+
+</div>
+
+`;
+
+}
+
+
+function openPage(title,html){
+
+document.getElementById(
+"pageTitle"
+).textContent=title;
+
+document.getElementById(
+"pageContent"
+).innerHTML=html;
+
+openModal("pageModal");
+
+}
+
+
+function openHistory(){
+
+const list=
+state.history
+.map(id=>getVideo(id))
+.filter(Boolean);
+
+openPage(
+"History",
+renderListHTML(
+list,
+"Your watch history is empty."
+)
+);
+
+}
+
+
+function openWatchLater(){
+
+const list=
+state.watchLater
+.map(id=>getVideo(id))
+.filter(Boolean);
+
+openPage(
+"Watch later",
+renderListHTML(
+list,
+"No videos saved for later."
+)
+);
+
+}
+
+
+function openLikedVideos(){
+
+const list=
+state.liked
+.map(id=>getVideo(id))
+.filter(Boolean);
+
+openPage(
+"Liked videos",
+renderListHTML(
+list,
+"You haven't liked any videos yet."
+)
+);
+
+}
+
+
+function openSubscriptions(){
+
+const channels=
+state.subscriptions;
+
+if(!channels.length){
+
+openPage(
+"Subscriptions",
+`
+<div class="empty">
+You haven't subscribed to any channels yet.
+<br><br>
+Open a video and tap Subscribe.
+</div>
+`
+);
+
+return;
+
+}
+
+const html=
+channels.map(channel=>`
+
+<div
+class="list-item"
+onclick="openChannel('${escapeJS(channel)}')"
+>
+
+<div class="avatar">
+${escapeHTML(
+channel.charAt(0).toUpperCase()
+)}
+</div>
+
+<div>
+
+<h3>
+${escapeHTML(channel)}
+</h3>
+
+<div class="meta">
+${
+videos.filter(
+v=>v.channel===channel
+).length
+}
+videos
+</div>
+
+</div>
+
+</div>
+
+`).join("");
+
+openPage(
+"Subscriptions",
+`<div class="list">${html}</div>`
+);
+
+}
+
+
+/* ============================================================
+   PLAYLISTS
+   ============================================================ */
+
+function openPlaylists(){
+
+const names=
+Object.keys(state.playlists);
+
+let html=`
+
+<button
+class="primary"
+onclick="createPlaylist()"
+>
+＋ New playlist
+</button>
+
+<div style="height:15px"></div>
+
+`;
+
+if(!names.length){
+
+html+=`
+
+<div class="empty">
+No playlists yet.
+<br>
+Create a playlist and add videos.
+</div>
+
+`;
+
+}else{
+
+html+=`
+
+<div class="list">
+
+${names.map(name=>`
+
+<div
+class="list-item"
+onclick="openPlaylist('${escapeJS(name)}')"
+>
+
+<div style="font-size:35px">
+📂
+</div>
+
+<div>
+
+<h3>
+${escapeHTML(name)}
+</h3>
+
+<div class="meta">
+${state.playlists[name].length}
+videos
+</div>
+
+</div>
+
+</div>
+
+`).join("")}
+
+</div>
+
+`;
+
+}
+
+openPage(
+"Playlists",
+html
+);
+
+}
+
+
+function createPlaylist(){
+
+const name=
+prompt("Playlist name:");
+
+if(!name)return;
+
+if(!state.playlists[name]){
+
+state.playlists[name]=[];
+
+saveState();
+
+showToast(
+"Playlist created"
+);
+
+}
+
+openPlaylists();
+
+}
+
+
+function openPlaylist(name){
+
+const ids=
+state.playlists[name]||[];
+
+const list=
+ids
+.map(id=>getVideo(id))
+.filter(Boolean);
+
+openPage(
+name,
+renderListHTML(
+list,
+`Playlist "${escapeHTML(name)}" is empty.`
+)
+);
+
+}
+
+
+/* ============================================================
+   PROFILE
+   ============================================================ */
 
 function openProfile(){
-  document.getElementById("profileNameInput").value=state.profile.name;
-  document.getElementById("profileHandleInput").value=state.profile.handle;
 
-  document.getElementById("profileNameDisplay").textContent=state.profile.name;
-  document.getElementById("profileHandleDisplay").textContent="@"+state.profile.handle;
-  document.getElementById("profileAvatar").textContent=
-    state.profile.name.charAt(0).toUpperCase();
+document.getElementById(
+"profileNameInput"
+).value=
+state.profile.name;
 
-  document.getElementById("profileStats").textContent=
-    `${state.subscriptions.length} subscriptions • ${state.liked.length} liked`;
+document.getElementById(
+"profileHandleInput"
+).value=
+state.profile.handle;
 
-  openModal("profileModal");
+document.getElementById(
+"profileNameDisplay"
+).textContent=
+state.profile.name;
+
+document.getElementById(
+"profileHandleDisplay"
+).textContent=
+"@"+state.profile.handle;
+
+document.getElementById(
+"profileAvatar"
+).textContent=
+state.profile.name
+.charAt(0)
+.toUpperCase();
+
+document.getElementById(
+"profileStats"
+).textContent=
+`${state.subscriptions.length} subscriptions • ${state.liked.length} liked`;
+
+openModal("profileModal");
+
 }
+
 
 function saveProfile(){
-  const name=document.getElementById("profileNameInput").value.trim();
-  const handle=document.getElementById("profileHandleInput").value.trim();
 
-  if(!name){
-    showToast("Enter your name");
-    return;
-  }
+const name=
+document.getElementById(
+"profileNameInput"
+).value.trim();
 
-  state.profile.name=name;
-  state.profile.handle=handle||"user";
+const handle=
+document.getElementById(
+"profileHandleInput"
+).value.trim();
 
-  saveState();
-  openProfile();
-  showToast("Profile saved");
+if(!name){
+
+showToast(
+"Enter your name"
+);
+
+return;
+
 }
 
-/* ---------------- NOTIFICATIONS ---------------- */
+state.profile.name=name;
+
+state.profile.handle=
+handle||"user";
+
+saveState();
+
+showToast(
+"Profile saved"
+);
+
+openProfile();
+
+}
+
+
+function openMyChannel(){
+
+closeModal("profileModal");
+
+openChannel(
+state.profile.name
+);
+
+}
+
+
+/* ============================================================
+   NOTIFICATIONS
+   ============================================================ */
 
 function openNotifications(){
-  const list=document.getElementById("notificationList");
 
-  if(!state.notifications.length){
-    list.innerHTML='<div class="empty">No notifications yet.</div>';
-  }else{
-    list.innerHTML=state.notifications.map(n=>`
-      <div class="list-item">
-        <div style="font-size:22px">🔔</div>
-        <div>
-          <b>${escapeHTML(n.text)}</b>
-          <div class="meta">${escapeHTML(n.time)}</div>
-        </div>
-      </div>
-    `).join("");
-  }
+const box=
+document.getElementById(
+"notificationList"
+);
 
-  openModal("notificationModal");
+if(!state.notifications.length){
+
+box.innerHTML=`
+
+<div class="empty">
+No notifications yet.
+</div>
+
+`;
+
+}else{
+
+box.innerHTML=
+state.notifications.map(n=>`
+
+<div class="list-item">
+
+<div style="font-size:22px">
+🔔
+</div>
+
+<div>
+
+<b>
+${escapeHTML(n.text)}
+</b>
+
+<div class="meta">
+${escapeHTML(n.time)}
+</div>
+
+</div>
+
+</div>
+
+`).join("");
+
 }
 
-/* ---------------- CREATE / UPLOAD ---------------- */
+openModal(
+"notificationModal"
+);
+
+}
+
+
+/* ============================================================
+   CREATE / UPLOAD
+   ============================================================ */
 
 function openCreate(){
-  document.getElementById("uploadTitle").value="";
-  document.getElementById("uploadDescription").value="";
-  document.getElementById("uploadFile").value="";
-  document.getElementById("uploadPreview").style.display="none";
-  document.getElementById("liveNotice").style.display="none";
-  document.getElementById("fileGroup").style.display="block";
-  document.getElementById("uploadType").value="video";
 
-  openModal("createModal");
+document.getElementById(
+"uploadTitle"
+).value="";
+
+document.getElementById(
+"uploadDescription"
+).value="";
+
+document.getElementById(
+"uploadFile"
+).value="";
+
+document.getElementById(
+"uploadPreview"
+).style.display="none";
+
+document.getElementById(
+"uploadType"
+).value="video";
+
+document.getElementById(
+"fileGroup"
+).style.display="block";
+
+document.getElementById(
+"liveNotice"
+).style.display="none";
+
+openModal("createModal");
+
 }
+
 
 function uploadTypeChanged(){
-  const type=document.getElementById("uploadType").value;
 
-  document.getElementById("liveNotice").style.display=
-    type==="live"?"block":"none";
+const type=
+document.getElementById(
+"uploadType"
+).value;
 
-  document.getElementById("fileGroup").style.display=
-    type==="live"?"none":"block";
+document.getElementById(
+"fileGroup"
+).style.display=
+type==="live"
+?"none"
+:"block";
+
+document.getElementById(
+"liveNotice"
+).style.display=
+type==="live"
+?"block"
+:"none";
+
 }
+
 
 function previewUpload(event){
-  const file=event.target.files[0];
-  const preview=document.getElementById("uploadPreview");
-  const video=document.getElementById("uploadPreviewVideo");
 
-  if(!file)return;
+const file=
+event.target.files[0];
 
-  if(!file.type.startsWith("video/")){
-    showToast("Please select a video file");
-    event.target.value="";
-    return;
-  }
+if(!file)return;
 
-  video.src=URL.createObjectURL(file);
-  preview.style.display="block";
+if(!file.type.startsWith("video/")){
+
+showToast(
+"Please select a video file"
+);
+
+event.target.value="";
+
+return;
+
 }
+
+const preview=
+document.getElementById(
+"uploadPreview"
+);
+
+const player=
+document.getElementById(
+"uploadPreviewVideo"
+);
+
+player.src=
+URL.createObjectURL(file);
+
+preview.style.display="block";
+
+}
+
 
 async function startUpload(){
-  const type=document.getElementById("uploadType").value;
 
-  if(type==="live"){
-    showToast("Live broadcasting needs a backend/WebRTC server");
-    return;
-  }
+const type=
+document.getElementById(
+"uploadType"
+).value;
 
-  const title=document.getElementById("uploadTitle").value.trim();
-  const description=document.getElementById("uploadDescription").value.trim();
-  const category=document.getElementById("uploadCategory").value;
-  const file=document.getElementById("uploadFile").files[0];
+if(type==="live"){
 
-  if(!title){
-    showToast("Enter a title");
-    return;
-  }
+showToast(
+"Live streaming needs a backend/WebRTC server"
+);
 
-  if(!file){
-    showToast("Select a video file");
-    return;
-  }
+return;
 
-  if(!file.type.startsWith("video/")){
-    showToast("Only video files are allowed");
-    return;
-  }
-
-  const id=Date.now();
-
-  const obj={
-    id,
-    title,
-    description:description||"Uploaded on VYZO.",
-    channel:state.profile.name,
-    category,
-    views:0,
-    likes:0,
-    age:"Just now",
-    duration:"Uploaded",
-    videoUrl:URL.createObjectURL(file),
-    local:true
-  };
-
-  uploadedVideos.push(obj);
-  videos.push(obj);
-
-  await saveUploadedVideo(obj,file);
-
-  if(type==="short"){
-    shorts.unshift({
-      id:id+1,
-      title,
-      channel:state.profile.name,
-      views:0,
-      likes:0,
-      videoUrl:obj.videoUrl
-    });
-
-    renderShorts();
-  }
-
-  saveState();
-  renderVideos();
-
-  addNotification(`Your video "${title}" was published`);
-
-  closeModal("createModal");
-  showToast("Video published successfully");
 }
 
-/* ---------------- SETTINGS ---------------- */
+const title=
+document.getElementById(
+"uploadTitle"
+).value.trim();
+
+const description=
+document.getElementById(
+"uploadDescription"
+).value.trim();
+
+const category=
+document.getElementById(
+"uploadCategory"
+).value;
+
+const file=
+document.getElementById(
+"uploadFile"
+).files[0];
+
+if(!title){
+
+showToast(
+"Enter a title"
+);
+
+return;
+
+}
+
+if(!file){
+
+showToast(
+"Select a video file"
+);
+
+return;
+
+}
+
+if(!file.type.startsWith("video/")){
+
+showToast(
+"Only video files are allowed"
+);
+
+return;
+
+}
+
+const id=
+Date.now();
+
+const videoUrl=
+URL.createObjectURL(file);
+
+const video={
+
+id:id,
+
+title:title,
+
+description:
+description||
+"Uploaded on VYZO.",
+
+channel:
+state.profile.name,
+
+category:category,
+
+views:0,
+
+likes:0,
+
+age:"Just now",
+
+duration:"Uploaded",
+
+videoUrl:videoUrl,
+
+local:true
+
+};
+
+videos.push(video);
+
+uploadedVideos.push(video);
+
+if(type==="short"){
+
+shorts.unshift({
+
+id:id+1,
+
+title:title,
+
+channel:state.profile.name,
+
+views:0,
+
+likes:0,
+
+videoUrl:videoUrl
+
+});
+
+renderShorts();
+
+}
+
+renderVideos();
+
+addNotification(
+`Your video "${title}" was published`
+);
+
+saveState();
+
+closeModal(
+"createModal"
+);
+
+showToast(
+"Video published successfully"
+);
+
+}
+
+
+/* ============================================================
+   SETTINGS
+   ============================================================ */
 
 function toggleTheme(){
-  document.body.classList.toggle("light");
 
-  state.theme=document.body.classList.contains("light")
-    ?"light":"dark";
+document.body.classList.toggle("light");
 
-  saveState();
-  showToast(state.theme==="light"?"Light mode":"Dark mode");
+state.theme=
+document.body.classList.contains("light")
+?"light"
+:"dark";
+
+saveState();
+
+showToast(
+state.theme==="light"
+?"Light mode"
+:"Dark mode"
+);
+
 }
+
 
 function toggleLanguage(){
-  state.language=state.language==="en"?"hi":"en";
-  saveState();
 
-  document.getElementById("languageText").textContent=
-    state.language==="hi"?"Hindi":"English";
+state.language=
+state.language==="en"
+?"hi"
+:"en";
 
-  if(state.language==="hi"){
-    showToast("Hindi mode selected");
-  }else{
-    showToast("English mode selected");
-  }
+saveState();
+
+document.getElementById(
+"languageText"
+).textContent=
+state.language==="hi"
+?"Hindi"
+:"English";
+
+showToast(
+state.language==="hi"
+?"Hindi selected"
+:"English selected"
+);
+
 }
 
-function applySavedSettings(){
-  if(state.theme==="light"){
-    document.body.classList.add("light");
-  }
 
-  document.getElementById("languageText").textContent=
-    state.language==="hi"?"Hindi":"English";
+function applySettings(){
+
+if(state.theme==="light"){
+
+document.body.classList.add(
+"light"
+);
+
 }
+
+document.getElementById(
+"languageText"
+).textContent=
+state.language==="hi"
+?"Hindi"
+:"English";
+
+}
+
 
 function openSettings(){
-  applySavedSettings();
-  openModal("settingsModal");
+
+applySettings();
+
+openModal(
+"settingsModal"
+);
+
 }
+
 
 function clearLocalData(){
-  if(!confirm("Clear all VYZO local data?"))return;
 
-  localStorage.removeItem("VYZO_STATE");
-  state=structuredClone(DEFAULT_STATE);
+if(!confirm(
+"Clear all VYZO local data?"
+))return;
 
-  showToast("Local data cleared");
+localStorage.removeItem(
+"VYZO_STATE"
+);
 
-  setTimeout(()=>{
-    location.reload();
-  },600);
+location.reload();
+
 }
 
-/* ---------------- HELP ---------------- */
+
+/* ============================================================
+   HELP
+   ============================================================ */
 
 function openHelp(){
-  openModal("helpModal");
+
+openModal(
+"helpModal"
+);
+
 }
 
-/* ---------------- CLOSE MODAL ON OUTSIDE CLICK ---------------- */
 
-document.querySelectorAll(".modal").forEach(modal=>{
-  modal.addEventListener("click",e=>{
-    if(e.target===modal){
-      modal.classList.remove("show");
-    }
-  });
+/* ============================================================
+   OUTSIDE CLICK
+   ============================================================ */
+
+document
+.querySelectorAll(".modal")
+.forEach(modal=>{
+
+modal.addEventListener(
+"click",
+function(event){
+
+if(event.target===modal){
+
+modal.classList.remove(
+"show"
+);
+
+}
+
+}
+);
+
 });
 
-/* ---------------- KEYBOARD ---------------- */
 
-document.addEventListener("keydown",e=>{
-  if(e.key==="Escape"){
-    closeAllModals();
-  }
+/* ============================================================
+   KEYBOARD
+   ============================================================ */
 
-  if(e.key==="/" && document.activeElement.tagName!=="INPUT"){
-    e.preventDefault();
-    document.getElementById("searchInput").focus();
-  }
-});
+document.addEventListener(
+"keydown",
+function(event){
 
-/* ---------------- HASH OPEN ---------------- */
+if(event.key==="Escape"){
+
+closeAllModals();
+
+}
+
+if(
+event.key==="/" &&
+document.activeElement.tagName!=="INPUT"
+){
+
+event.preventDefault();
+
+document
+.getElementById("searchInput")
+.focus();
+
+}
+
+}
+);
+
+
+/* ============================================================
+   HASH LINKS
+   ============================================================ */
 
 function handleHash(){
-  const hash=location.hash;
 
-  if(hash.startsWith("#video=")){
-    const id=hash.split("=")[1];
-    openVideo(id);
-  }
+const hash=
+location.hash;
 
-  if(hash.startsWith("#short=")){
-    const id=hash.split("=")[1];
-    openShort(id);
-  }
+if(hash.startsWith("#video=")){
+
+const id=
+hash.split("=")[1];
+
+openVideo(id);
+
 }
 
-/* ---------------- INIT ---------------- */
+if(hash.startsWith("#short=")){
 
-applySavedSettings();
+const id=
+hash.split("=")[1];
+
+openShort(id);
+
+}
+
+}
+
+
+/* ============================================================
+   INDEXEDDB — LOCAL UPLOADED VIDEOS
+   ============================================================ */
+
+const DB_NAME=
+"VYZO_UPLOADS_DB";
+
+const STORE_NAME=
+"videos";
+
+
+function openDB(){
+
+return new Promise(
+(resolve,reject)=>{
+
+if(!window.indexedDB){
+
+resolve(null);
+
+return;
+
+}
+
+const request=
+indexedDB.open(
+DB_NAME,
+1
+);
+
+request.onupgradeneeded=
+function(){
+
+if(
+!request.result
+.objectStoreNames
+.contains(STORE_NAME)
+){
+
+request.result
+.createObjectStore(
+STORE_NAME,
+{keyPath:"id"}
+);
+
+}
+
+};
+
+request.onsuccess=
+()=>{
+resolve(request.result);
+};
+
+request.onerror=
+()=>{
+reject(request.error);
+};
+
+}
+);
+
+}
+
+
+async function saveUploadedVideo(video,file){
+
+try{
+
+const db=
+await openDB();
+
+if(!db)return;
+
+await new Promise(
+(resolve,reject)=>{
+
+const transaction=
+db.transaction(
+STORE_NAME,
+"readwrite"
+);
+
+transaction
+.objectStore(STORE_NAME)
+.put({
+...video,
+blob:file
+});
+
+transaction.oncomplete=
+resolve;
+
+transaction.onerror=
+()=>{
+reject(transaction.error);
+};
+
+}
+);
+
+}catch(e){}
+
+}
+
+
+async function loadUploadedVideos(){
+
+try{
+
+const db=
+await openDB();
+
+if(!db)return;
+
+const records=
+await new Promise(
+(resolve,reject)=>{
+
+const transaction=
+db.transaction(
+STORE_NAME,
+"readonly"
+);
+
+const request=
+transaction
+.objectStore(STORE_NAME)
+.getAll();
+
+request.onsuccess=
+()=>{
+resolve(
+request.result||[]
+);
+};
+
+request.onerror=
+()=>{
+reject(request.error);
+};
+
+}
+);
+
+records.forEach(record=>{
+
+const url=
+URL.createObjectURL(
+record.blob
+);
+
+uploadedVideos.push({
+
+...record,
+
+videoUrl:url
+
+});
+
+});
+
+videos=[
+...videos,
+...uploadedVideos
+];
+
 renderVideos();
+
+}catch(e){}
+
+}
+
+
+/* ============================================================
+   INITIALIZE
+   ============================================================ */
+
+applySettings();
+
+renderVideos();
+
 renderShorts();
+
 loadUploadedVideos();
+
 handleHash();
 
-/* expose */
-window.openVideo=openVideo;
-window.openShort=openShort;
-window.nextShort=nextShort;
-window.previousShort=previousShort;
 </script>
 
 </body>
