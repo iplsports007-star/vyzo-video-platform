@@ -1,0 +1,66 @@
+/* VYZO — MASTER STYLE FILE */
+/* Main responsive styles are currently embedded in index.html.
+   This file is reserved for the scalable VYZO UI system. */
+
+:root {
+  --vyzo-bg: #09090d;
+  --vyzo-surface: #111117;
+  --vyzo-surface-2: #181820;
+  --vyzo-border: #292933;
+  --vyzo-text: #ffffff;
+  --vyzo-muted: #a6a6b2;
+  --vyzo-accent: #ff3158;
+  --vyzo-accent-2: #7c3aed;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.vyzo-loading {
+  display: grid;
+  place-items: center;
+  min-height: 200px;
+  color: var(--vyzo-muted);
+}
+
+.vyzo-error {
+  padding: 20px;
+  border: 1px solid var(--vyzo-border);
+  border-radius: 12px;
+  background: var(--vyzo-surface);
+  color: #ff8da4;
+  text-align: center;
+}
+
+.vyzo-empty {
+  padding: 50px 20px;
+  text-align: center;
+  color: var(--vyzo-muted);
+}
+
+@media (max-width: 850px) {
+  .desktop-only {
+    display: none !important;
+  }
+}
